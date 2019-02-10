@@ -53,9 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BuildPrisma.cs" />
+     <Compile Include="Assets\Scripts\GameManagerLogic.cs" />
+     <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\ObliqueProjection.cs" />
-     <Compile Include="Assets\Scripts\scrollTunnel.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PrismaBuilder.cs" />
+     <Compile Include="Assets\Scripts\Rotation.cs" />
+     <Compile Include="Assets\Scripts\TunnelScroller.cs" />
+     <Compile Include="Assets\Scripts\WallSpawnerLogic.cs" />
      <None Include="Assets\Shaders\Wireframe.cginc" />
      <None Include="Assets\Shaders\WireframeTransparentCulled.shader" />
      <None Include="Assets\Shaders\Wireframe.shader" />
