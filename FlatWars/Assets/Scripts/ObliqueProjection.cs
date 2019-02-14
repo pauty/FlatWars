@@ -35,12 +35,14 @@ public class ObliqueProjection: MonoBehaviour {
 [RequireComponent(typeof(Camera))]
 
 public class ObliqueProjection: MonoBehaviour {
-    Vector3 mousePosition;
     float xc, yc;
     float maxW = 18F;
     float maxH = 10F;
     Camera cam;
+    Vector3 mousePosition;
+    Vector3 prevMousePosition;
     Vector3 cameraLocalPosition;
+  
     
     void Start(){
         cam = this.gameObject.GetComponent<Camera>();
@@ -48,8 +50,11 @@ public class ObliqueProjection: MonoBehaviour {
     
     void Update(){
         mousePosition = Input.mousePosition;
+        mousePosition = (mousePosition + prevMousePosition)/2;
+        prevMousePosition = mousePosition;
         xc = (2*mousePosition.x-Screen.width)/(Screen.width);
         yc = (2*mousePosition.y-Screen.height)/(Screen.height);    
+        cam = Camera.main;
         cameraLocalPosition = cam.transform.localPosition;
         cameraLocalPosition.x = -xc*maxW;
         cameraLocalPosition.y = yc*maxH;
@@ -63,6 +68,7 @@ public class ObliqueProjection: MonoBehaviour {
         mat[1, 2] = vertObl;
         cam.projectionMatrix = mat;
     }
+   
 }
 
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManagerLogic : MonoBehaviour {
     
     //public EnemySpawner enemySpawner;
-    public WallSpawnerLogic wallSpawner;
+    //public WallSpawnerLogic wallSpawner;
     public PrismaBuilder tunnelPrismaBuilder;
     
     public PrismaBuilder.TypeEnum tunnelType = PrismaBuilder.TypeEnum.Grid;

@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour {
     float nextTime;
     float timeInterval = 0.1F;
     bool go = true;
+    public float projectileSpeed = 280;
     Rigidbody rb;
+    Vector3 knockback;
+    public GameObject projectile;
     
 	// Use this for initialization
 	void Start () {
@@ -18,9 +21,25 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-	     if(Input.GetKeyDown(KeyCode.JoystickButton0))
+	void Update () {
+	     if(Input.GetKeyDown(KeyCode.JoystickButton0)){
+	        //FIRE
+	        GameObject p;
+	        Vector3 pos = new Vector3(transform.position.x+1, transform.position.y, transform.position.z+10);
+	        
+	        p = Instantiate(projectile, pos, Quaternion.identity);	        
+	        //p.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, projectileSpeed);
+	        //Destroy(p, 10F);
+	        
+	        pos.x -= 2;
+	        p = Instantiate(projectile, pos, Quaternion.identity);
+	        //p.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, projectileSpeed);
+	        //Destroy(p, 10F);
+	        
+	        
 	        Debug.Log(0);
+	     }
+	     
 	     if(Input.GetKeyDown(KeyCode.JoystickButton1))
 	        Debug.Log(1);
 	     if(Input.GetKeyDown(KeyCode.JoystickButton2))
@@ -85,12 +104,22 @@ public class PlayerController : MonoBehaviour {
          float dx = Input.GetAxis("JoyLX");
          float dy = Input.GetAxis("JoyLY");
          Vector3 movement = new Vector3(dx, -dy, 0f).normalized;
-         rb.velocity = movement * 16; 
+         rb.velocity = movement * 16 + knockback; 
+         knockback = new Vector3(0,0,0);
          //rb.AddForce(new Vector3(0,dy*4,0));
 	        
-	     
+
 	      
 	           
 		
 	}
+	
+    void OnCollisionStay(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            knockback = contact.normal * 40; 
+        }
+
+    }
 }

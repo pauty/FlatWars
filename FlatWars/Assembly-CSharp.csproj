@@ -53,20 +53,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BoundDestroyer.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawnerLogic.cs" />
      <Compile Include="Assets\Scripts\GameManagerLogic.cs" />
+     <Compile Include="Assets\Scripts\HazardSpawnerLogic.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\ObliqueProjection.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PrismaBuilder.cs" />
+     <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\Rotation.cs" />
+     <Compile Include="Assets\Scripts\TriangleEnemyController.cs" />
      <Compile Include="Assets\Scripts\TunnelScroller.cs" />
-     <Compile Include="Assets\Scripts\WallSpawnerLogic.cs" />
      <None Include="Assets\Shaders\Wireframe.cginc" />
      <None Include="Assets\Shaders\WireframeTransparentCulled.shader" />
      <None Include="Assets\Shaders\Wireframe.shader" />
      <None Include="Assets\Shaders\WireframeTransparent.shader" />
      <None Include="Assets\Shaders\WireframeShaded-Unlit.shader" />
+     <None Include="Assets\Shaders\CrossSection\DoubleFaceUnlit.shader" />
      <None Include="Assets\Shaders\WireframeNoDiags.shader" />
+     <None Include="Assets\Shaders\CrossSection\GenericThreePlanesBSP.shader" />
+     <None Include="Assets\Shaders\CrossSection\StandardDoubleFace.shader" />
+     <None Include="Assets\Shaders\CrossSection.shader" />
+     <None Include="Assets\Shaders\CrossSectionSimple.shader" />
+     <None Include="Assets\Shaders\CrossSection\OnePlaneBSP.shader" />
+     <None Include="Assets\Shaders\ShowBackface.shader" />
+     <None Include="Assets\Shaders\TransparentReceiver.shader" />
+     <None Include="Assets\Shaders\CrossSection\StincelledUnlitTexture.shader" />
+     <None Include="Assets\Shaders\CrossSection\ThreeAAPlanesBSP.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/pauty/Documenti/Unity Projects/FlatWars/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

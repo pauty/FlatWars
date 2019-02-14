@@ -27,7 +27,7 @@ public class PrismaBuilder : MonoBehaviour
     public bool doubleFace = false;
     public bool addBases = false;
     
-    Vector3[] basev = null;
+    public Vector3[] basev = null;
     
     [ContextMenu("buildPrisma")]
     public void buildPrisma(){
@@ -40,7 +40,7 @@ public class PrismaBuilder : MonoBehaviour
         else
             mesh.Clear();
         
-        Vector3 v3 = transform.position;
+        Vector3 v3 = gameObject.transform.position;
         if(type == TypeEnum.Grid){
             int W = widthSteps + 1;
             int H = heightSteps + 1;
@@ -49,6 +49,7 @@ public class PrismaBuilder : MonoBehaviour
             
             v3.x = v3.x - widthSteps*sectorWidth/2 - sectorWidth;
             v3.y = v3.y + heightSteps*sectorHeight/2;  
+            Debug.Log(v3);
             int k = 0;     
             for(int i = 0; i < W; i++, k++){   
                 v3.x = v3.x + sectorWidth;
