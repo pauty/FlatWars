@@ -9,19 +9,20 @@ public class TunnelScroller : MonoBehaviour {
     float traslation;
     float sectorDepth = 1F;   
     Vector3 originalPosition;
-    //public GameManager manager;
+    PlayerController player;
     
 	// Use this for initialization
 	void Start () {
 	    sectorDepth = gameObject.GetComponent<PrismaBuilder>().sectorDepth;
 		originalPosition = transform.position;
 		totalDistance = 0F;
+		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update(){
 
-	    traslation = speed*Time.deltaTime;
+	    traslation = player.speed*Time.deltaTime;
 	    if(totalDistance >= sectorDepth){
             transform.position = originalPosition;
             totalDistance = 0F;

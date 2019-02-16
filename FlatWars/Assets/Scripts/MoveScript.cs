@@ -9,14 +9,16 @@ public class MoveScript : MonoBehaviour {
     float traslation;
     float sectorDepth = 1F;   
     Vector3 originalPosition;
+    PlayerController player;
     
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update(){
-	    traslation = speed*Time.deltaTime;
+	    traslation = player.speed*Time.deltaTime;
         transform.Translate(0, 0 , -traslation);	        
 	    
 	}

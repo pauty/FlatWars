@@ -27,5 +27,7 @@ public class ProjectileMovement : MonoBehaviour {
 	        Debug.Log(" yyyyyyessssss");
 	        Destroy(this.gameObject);
 	    }
+	    else
+	        Debug.Log("P collision");
 	}
 }

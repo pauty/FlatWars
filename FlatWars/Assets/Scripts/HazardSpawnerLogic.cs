@@ -6,15 +6,15 @@ public class HazardSpawnerLogic : MonoBehaviour {
     
     public GameManagerLogic gameManager;
     public GameObject[] HazardPrefabs = new GameObject[3];
-    public float timeInterval = 14f;
-    public float nextTime;
+    public float timeInterval = 1f;
+    float nextTime;
 	// Use this for initialization
 	void Start () {
 	    nextTime = Time.time + timeInterval;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(Time.time >= nextTime){
 		    int i = Random.Range(0, HazardPrefabs.Length);
 		    //i = 3;
@@ -61,11 +61,16 @@ public class HazardSpawnerLogic : MonoBehaviour {
 		    }
 		    wall.transform.localScale = new Vector3(1, 1, gameManager.tunnelSectorDepth/10);
 		   
-		    nextTime = Time.time + timeInterval;  
+		    //nextTime = Time.time + timeInterval;  
 		}
 	}
 	
-	void spawnWallSet(){
-	    
+	void OnTriggerEnter(Collider coll){
+	    nextTime = Time.time + timeInterval;
 	}
+	
+	void OnTriggerStay(Collider coll){
+	    nextTime = Time.time + timeInterval;
+	}
+	
 }

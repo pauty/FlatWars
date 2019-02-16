@@ -4,52 +4,58 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     
+    public float minSpeed = 40F;
+    public float baseSpeed = 70F;
+    public float maxSpeed = 140F;
+    /*
     bool axisFreeX = true;
     bool axisFreeY = true;
     float nextTime;
     float timeInterval = 0.1F;
     bool go = true;
-    public float projectileSpeed = 280;
+    */
     Rigidbody rb;
     Vector3 knockback;
+    public float speed = 70F;
+    float updateSpeed;
     public GameObject projectile;
+    bool canShoot = true;
+    public float fireInterval = 0.2F;
+    float fireTime;
     
 	// Use this for initialization
 	void Start () {
-		nextTime = Time.time;
+		fireTime = Time.time;
 		rb = gameObject.GetComponent<Rigidbody>();
+		updateSpeed = speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	     if(Input.GetKeyDown(KeyCode.JoystickButton0)){
+	     bool shooting = Input.GetButton("Fire");
+	     if(shooting && canShoot){
 	        //FIRE
-	        GameObject p;
-	        Vector3 pos = new Vector3(transform.position.x+1, transform.position.y, transform.position.z+10);
-	        
-	        p = Instantiate(projectile, pos, Quaternion.identity);	        
-	        //p.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, projectileSpeed);
-	        //Destroy(p, 10F);
-	        
+	        Vector3 pos = new Vector3(transform.position.x+1, transform.position.y, transform.position.z+10);	        
+	        Instantiate(projectile, pos, Quaternion.identity);	          
 	        pos.x -= 2;
-	        p = Instantiate(projectile, pos, Quaternion.identity);
-	        //p.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, projectileSpeed);
-	        //Destroy(p, 10F);
-	        
-	        
+	        Instantiate(projectile, pos, Quaternion.identity);	        
 	        Debug.Log(0);
+	        fireTime = Time.time;	        
 	     }
+	     canShoot = (Time.time - fireTime >= fireInterval) || !shooting;
 	     
-	     if(Input.GetKeyDown(KeyCode.JoystickButton1))
-	        Debug.Log(1);
-	     if(Input.GetKeyDown(KeyCode.JoystickButton2))
-	        Debug.Log(2);
-	     if(Input.GetKeyDown(KeyCode.JoystickButton3))
-	        Debug.Log(3);
-	     if(Input.GetKeyDown(KeyCode.JoystickButton4))
-	        Debug.Log(4);
-	     if(Input.GetKeyDown(KeyCode.JoystickButton5))
-	        Debug.Log(5);
+	     
+	     if((Input.GetButton("SpeedUp") && speed < maxSpeed))
+	        updateSpeed += 1;
+	     else if((Input.GetButton("SpeedDown") && speed > minSpeed))
+	        updateSpeed -= 1;
+	     else{
+	        if(speed < baseSpeed)
+	            updateSpeed += 1;
+	        else if(speed > baseSpeed)
+	            updateSpeed -= 1;
+	     }
+
 	     
 	     
 	     
@@ -106,12 +112,12 @@ public class PlayerController : MonoBehaviour {
          Vector3 movement = new Vector3(dx, -dy, 0f).normalized;
          rb.velocity = movement * 16 + knockback; 
          knockback = new Vector3(0,0,0);
-         //rb.AddForce(new Vector3(0,dy*4,0));
-	        
-
-	      
-	           
+         //rb.AddForce(new Vector3(0,dy*4,0));           
 		
+	}
+	
+	void LateUpdate(){
+	    speed = updateSpeed;
 	}
 	
     void OnCollisionStay(Collision collision)
