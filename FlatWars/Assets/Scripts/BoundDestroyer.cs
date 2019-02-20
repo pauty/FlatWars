@@ -14,8 +14,7 @@ public class BoundDestroyer : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-	    boundCollider = GameObject.FindGameObjectsWithTag("Bounds")[0].GetComponent<Collider>();
-		
+	    boundCollider = GameObject.FindGameObjectWithTag("Bounds").GetComponent<Collider>();	
 	}
 	
 	// Update is called once per frame

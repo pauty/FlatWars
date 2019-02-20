@@ -5,10 +5,8 @@ using UnityEngine;
 public class MoveScript : MonoBehaviour {
 
 
-    public float speed = 1;
-    float traslation;
-    float sectorDepth = 1F;   
-    Vector3 originalPosition;
+    //public float speed = 1;
+    float traslation; 
     PlayerController player;
     
 	// Use this for initialization

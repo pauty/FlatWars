@@ -133,6 +133,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
+        type: 3}
+      propertyPath: spawnPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 2618625142212998561}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1ed59ad48444e8fb9d951ad3d449a9, type: 3}
 --- !u!4 &2618625142212998561 stripped
@@ -198,9 +208,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
         type: 3}
+      propertyPath: spawnPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
+        type: 3}
       propertyPath: spawnGroup
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 4973761807757415110}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1ed59ad48444e8fb9d951ad3d449a9, type: 3}
 --- !u!4 &4973761807757415110 stripped
@@ -264,6 +284,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
+        type: 3}
+      propertyPath: spawnPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280456692657764, guid: 3b1ed59ad48444e8fb9d951ad3d449a9,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 8693898055545549437}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1ed59ad48444e8fb9d951ad3d449a9, type: 3}
 --- !u!4 &8693898055545549437 stripped

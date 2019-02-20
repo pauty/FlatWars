@@ -54,20 +54,25 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoundDestroyer.cs" />
-     <Compile Include="Assets\Scripts\EnemySpawnerLogic.cs" />
-     <Compile Include="Assets\Scripts\GameManagerLogic.cs" />
-     <Compile Include="Assets\Scripts\HazardSpawnerLogic.cs" />
+     <Compile Include="Assets\Scripts\EnemyBaseBehaviour.cs" />
+     <Compile Include="Assets\Scripts\EnemyGroupController.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawnerCoordinator.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\HazardSpawner.cs" />
+     <Compile Include="Assets\Scripts\LaserController.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\ObliqueProjection.cs" />
+     <Compile Include="Assets\Scripts\PentagonEnemyController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PrismaBuilder.cs" />
      <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\QuadEnemyController.cs" />
      <Compile Include="Assets\Scripts\Rotation.cs" />
+     <Compile Include="Assets\Scripts\SphereExplosionController.cs" />
      <Compile Include="Assets\Scripts\TimeDestroyer.cs" />
      <Compile Include="Assets\Scripts\TriangleEnemyController.cs" />
      <Compile Include="Assets\Scripts\TunnelScroller.cs" />
-     <Compile Include="Assets\SphereExplosionController.cs" />
      <None Include="Assets\Shaders\Wireframe.cginc" />
      <None Include="Assets\Shaders\WireframeTransparentCulled.shader" />
      <None Include="Assets\Shaders\Wireframe.shader" />
@@ -79,6 +84,7 @@
      <None Include="Assets\Shaders\CrossSection\DoubleFaceUnlit.shader" />
      <None Include="Assets\Shaders\WireframeNoDiags.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\Shaders\ShadowReveiver.shader" />
      <None Include="Assets\Shaders\CrossSection\GenericThreePlanesBSP.shader" />
      <None Include="Assets\Shaders\CrossSection\StandardDoubleFace.shader" />
      <None Include="Assets\Shaders\CrossSection.shader" />

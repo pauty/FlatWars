@@ -4,25 +4,17 @@ using UnityEngine;
 
 public class QuadEnemyController : MonoBehaviour {
 
-    public float additionalSpeed = 10F;
-    public float speedVariance = 20F;
-    float speed;
-    Rigidbody rb;
-    PlayerController player;
     public GameObject explosionObject;
     public float explosionDistance = 5;
+    PlayerController player;
     
 	// Use this for initialization
 	void Start () {
-		rb = gameObject.GetComponent<Rigidbody>();
-		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-		speed = Random.Range(-speedVariance, speedVariance) + additionalSpeed;
+	    player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	    rb.velocity = new Vector3(0, 0, -(player.speed + speed));
-	    
+	void Update () {	    
 	    if(Vector3.Distance(player.gameObject.transform.position, transform.position)  < explosionDistance){
 	        Destroy(this.gameObject);
 	        Instantiate(explosionObject, transform.position, Quaternion.identity);

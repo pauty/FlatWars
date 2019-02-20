@@ -203,10 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e90ca8a90d14f6f954995101f8dc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 40
-  baseSpeed: 70
-  maxSpeed: 140
-  speed: 70
+  minSpeed: 30
+  baseSpeed: 60
+  maxSpeed: 100
+  speed: 50
   projectile: {fileID: 1450314835312072, guid: 12e0ba1be8d1542e1886ed9cf2d59cd1, type: 3}
   fireInterval: 0.2
 --- !u!54 &54901399916244428

@@ -120,6 +120,12 @@ public class PlayerController : MonoBehaviour {
 	    speed = updateSpeed;
 	}
 	
+	
+	void OnTriggerEnter(Collider coll){
+	    if(coll.gameObject.CompareTag("Explosion"))
+	        Debug.Log("EXPLODED");
+	}
+	
     void OnCollisionStay(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
