@@ -7,17 +7,11 @@ public class PlayerController : MonoBehaviour {
     public float minSpeed = 40F;
     public float baseSpeed = 70F;
     public float maxSpeed = 140F;
-    /*
-    bool axisFreeX = true;
-    bool axisFreeY = true;
-    float nextTime;
-    float timeInterval = 0.1F;
-    bool go = true;
-    */
+ 
     Rigidbody rb;
     Vector3 knockback;
-    public float speed = 70F;
-    float updateSpeed;
+    public Vector3 speed = new Vector3(0F, 0F, 70F);
+    Vector3 updateSpeed;
     public GameObject projectile;
     bool canShoot = true;
     public float fireInterval = 0.2F;
@@ -32,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	
 	     bool shooting = Input.GetButton("Fire");
 	     if(shooting && canShoot){
 	        //FIRE
@@ -45,74 +40,22 @@ public class PlayerController : MonoBehaviour {
 	     canShoot = (Time.time - fireTime >= fireInterval) || !shooting;
 	     
 	     
-	     if((Input.GetButton("SpeedUp") && speed < maxSpeed))
-	        updateSpeed += 1;
-	     else if((Input.GetButton("SpeedDown") && speed > minSpeed))
-	        updateSpeed -= 1;
+	     if((Input.GetButton("SpeedUp") && speed.z < maxSpeed))
+	        updateSpeed.z += 1;
+	     else if((Input.GetButton("SpeedDown") && speed.z > minSpeed))
+	        updateSpeed.z -= 1;
 	     else{
-	        if(speed < baseSpeed)
-	            updateSpeed += 1;
-	        else if(speed > baseSpeed)
-	            updateSpeed -= 1;
+	        if(speed.z < baseSpeed)
+	            updateSpeed.z += 1;
+	        else if(speed.z > baseSpeed)
+	            updateSpeed.z -= 1;
 	     }
-
-	     
-	     
-	     
-	     /*   
-	     int xAxis = (int)Input.GetAxisRaw("DpadX");
-         if(xAxis != 0 && axisFreeX){
-            axisFreeX = false;
-            if(xAxis == -1)
-                transform.Translate(-5,0,0);
-            else 
-                transform.Translate(5,0,0);
-         }
-         else if(xAxis == 0)   
-            axisFreeX = true;
-            
-         int yAxis = (int)Input.GetAxisRaw("DpadY");
-         if(yAxis != 0 && axisFreeY){
-            axisFreeY = false;
-            if(yAxis == -1)
-                transform.Translate(0,5,0);
-            else 
-                transform.Translate(0,-5,0);
-         }
-         else if(yAxis == 0)   
-            axisFreeY = true;
-         */
-         
-         /*
-         if(Time.time >= nextTime || go){
-            nextTime = Time.time + timeInterval;
-            if(Input.GetAxisRaw("DpadX") == -1){
-                //transform.Translate(-3,0,0);
-                rb.MovePosition(new Vector3(transform.position.x - 3, transform.position.y ,transform.position.z));
-            }
-            else if(Input.GetAxisRaw("DpadX") == 1){
-                //transform.Translate(3,0,0);
-                 rb.MovePosition(new Vector3(transform.position.x +3, transform.position.y ,transform.position.z));
-            }
-            
-            if(Input.GetAxisRaw("DpadY") == -1){
-                //transform.Translate(0,3,0);
-                rb.MovePosition(new Vector3(transform.position.x, transform.position.y +3,transform.position.z));
-            }
-            else if(Input.GetAxisRaw("DpadY") == 1){
-                //transform.Translate(0,-3,0);
-                 rb.MovePosition(new Vector3(transform.position.x, transform.position.y -3,transform.position.z));
-            }
-         }
-         go = Input.GetAxisRaw("DpadX") == 0 && Input.GetAxisRaw("DpadY") == 0;
-          */
          
          float dx = Input.GetAxis("JoyLX");
          float dy = Input.GetAxis("JoyLY");
          Vector3 movement = new Vector3(dx, -dy, 0f).normalized;
          rb.velocity = movement * 16 + knockback; 
-         knockback = new Vector3(0,0,0);
-         //rb.AddForce(new Vector3(0,dy*4,0));           
+         knockback = new Vector3(0,0,0);           
 		
 	}
 	

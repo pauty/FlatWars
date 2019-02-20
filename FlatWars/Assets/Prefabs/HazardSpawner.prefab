@@ -58,6 +58,11 @@ MonoBehaviour:
   - {fileID: 1065292807364866, guid: 951363b6f8606546393ab4271ff0eefc, type: 3}
   - {fileID: 7581524037091289389, guid: a22359dc1c19d36539f9fb3ff0493e72, type: 3}
   - {fileID: 7581524037091289389, guid: a02f3ae59e0945e8485c9f74e3fb3fdf, type: 3}
+  - {fileID: 7581524037091289389, guid: cee6a1bf45682827f904ae3854154721, type: 3}
+  - {fileID: 7581524037091289389, guid: 8da220466af3e42339c92fd468735957, type: 3}
+  - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
+  - {fileID: 1955572374327358, guid: e4a06deb45dc00cc2802f9e2ff1799e8, type: 3}
+  - {fileID: 1955572374327358, guid: ffd1365a325c976c3838e11bb54010a8, type: 3}
   timeInterval: 1
 --- !u!65 &4749227633763872768
 BoxCollider:

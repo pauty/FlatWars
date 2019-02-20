@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour {
 
-
-    //public float speed = 1;
-    float traslation; 
+    Vector3 traslation; 
     PlayerController player;
     
 	// Use this for initialization
@@ -16,8 +14,8 @@ public class MoveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update(){
-	    traslation = player.speed*Time.deltaTime;
-        transform.Translate(0, 0 , -traslation);	        
+	    traslation = -(player.speed*Time.deltaTime);
+        transform.Translate(traslation);	        
 	    
 	}
 }

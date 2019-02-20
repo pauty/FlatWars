@@ -8,15 +8,17 @@ public class EnemyGroupController : MonoBehaviour
     void Start()
     {
         EnemyBaseBehaviour enemy;
-        float commonBaseSpeed = 0F;
-        float commonAdditionalSpeed = 0F;
+        Vector3 commonBaseSpeed = Vector3.zero;
+        Vector3 commonAdditionalSpeed = Vector3.zero;
         bool isFirst = true;
         for(int i = 0; i < this.gameObject.transform.childCount; i++){
             enemy = this.gameObject.transform.GetChild(i).GetComponent<EnemyBaseBehaviour>();
             if(enemy != null){
                 if(isFirst){
                     commonBaseSpeed = enemy.baseSpeed;
-                    commonAdditionalSpeed = Random.Range(enemy.additionalSpeedMin, enemy.additionalSpeedMax);
+                    commonAdditionalSpeed.x = 0F;
+                    commonAdditionalSpeed.y = 0F;
+                    commonAdditionalSpeed.z = Random.Range(enemy.additionalSpeedMin.z, enemy.additionalSpeedMax.z);
                     isFirst = false;
                 }
                 enemy.baseSpeed = commonBaseSpeed;

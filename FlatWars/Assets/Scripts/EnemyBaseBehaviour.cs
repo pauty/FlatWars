@@ -5,16 +5,11 @@ using UnityEngine;
 public class EnemyBaseBehaviour : MonoBehaviour
 {
 
-    public float baseSpeed = 10F;
-    public float additionalSpeed = float.MinValue;
-    public float additionalSpeedMin = -20F;
-    public float additionalSpeedMax = 20F;
-    public float activationDistance = 500F;
-    public float chaseProbability = 0.1F;
-    float chaseSpeed = 2.4F;
-    public bool canChase = true;
-    bool isChasing;
-    float speed;
+    public Vector3 baseSpeed = new Vector3(0F, 0F, 10F);
+    public Vector3 additionalSpeed = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+    public Vector3 additionalSpeedMin = new Vector3(0F, 0F, -5F);
+    public Vector3 additionalSpeedMax = new Vector3(0F, 0F, 5F);
+    Vector3 speed;
     Rigidbody rb;
     PlayerController player;
     
@@ -23,12 +18,11 @@ public class EnemyBaseBehaviour : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-		if(additionalSpeed == float.MinValue)
-		    additionalSpeed = Random.Range(additionalSpeedMin, additionalSpeedMax);
-		if(canChase)
-		    isChasing = Random.Range(0F, 1F) <= chaseProbability ? true : false;
-		else
-		    isChasing = false;
+		if(additionalSpeed.x == float.MaxValue){
+		    additionalSpeed.x = Random.Range(additionalSpeedMin.x, additionalSpeedMax.x);
+		    additionalSpeed.y = Random.Range(additionalSpeedMin.y, additionalSpeedMax.y);
+		    additionalSpeed.z = Random.Range(additionalSpeedMin.x, additionalSpeedMax.z);
+		}
 		computeSpeed();       
     }
     
@@ -39,25 +33,14 @@ public class EnemyBaseBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.gameObject.transform.position) > activationDistance){
-            rb.velocity = new Vector3(0, 0, -player.speed);
-        }
-        else{
-            if(isChasing){
-                float velX, velY;
-                if(player.transform.position.x < transform.position.x)
-                    velX = -chaseSpeed;
-                else
-                    velX = chaseSpeed;
-                if(player.transform.position.y < transform.position.y)
-                    velY = -chaseSpeed;
-                else
-                    velY = chaseSpeed;
-                
-                rb.velocity = new Vector3(velX, velY, -(player.speed + speed));
-            }
-            else
-                rb.velocity = new Vector3(0, 0, -(player.speed + speed));
+        Vector3 vel = rb.velocity;
+        vel.z = -(player.speed.z + speed.z);
+        rb.velocity = vel;
+    }
+    
+    void OnTriggerEnter(Collider coll){
+        if(coll.gameObject.CompareTag("ActivationWall")){
+            rb.velocity = speed;
         }
     }
 }

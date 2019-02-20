@@ -6,7 +6,7 @@ public class TunnelScroller : MonoBehaviour {
 
     public float speed = 1;
     float totalDistance; 
-    float traslation;
+    Vector3 traslation;
     float sectorDepth = 1F;   
     Vector3 originalPosition;
     PlayerController player;
@@ -22,14 +22,14 @@ public class TunnelScroller : MonoBehaviour {
 	// Update is called once per frame
 	void Update(){
 
-	    traslation = player.speed*Time.deltaTime;
+	    traslation = -(player.speed*Time.deltaTime);
 	    if(totalDistance >= sectorDepth){
             transform.position = originalPosition;
             totalDistance = 0F;
         }
         else{
-            transform.Translate(0, 0 , -traslation);
-        	totalDistance += traslation;
+            transform.Translate(traslation);
+        	totalDistance += -traslation.z;
         }
 	        
 	    
