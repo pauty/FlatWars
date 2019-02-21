@@ -7,8 +7,8 @@ public class HazardSpawner: MonoBehaviour {
     public GameController gameController;
     public GameObject[] HazardPrefabs = new GameObject[3];
     public float timeInterval = 1f;
-    float nextTime;
-    bool triggerChecked = true;
+    public float nextTime;
+    public bool triggerChecked = true;
 	// Use this for initialization
 	void Start () {
 	    nextTime = Time.time + timeInterval;

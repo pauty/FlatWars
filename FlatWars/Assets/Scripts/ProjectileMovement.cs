@@ -28,6 +28,6 @@ public class ProjectileMovement : MonoBehaviour {
 	        Destroy(this.gameObject);
 	    }
 	    else
-	        Debug.Log("P collision");
+	        Debug.Log(coll.gameObject.tag);
 	}
 }

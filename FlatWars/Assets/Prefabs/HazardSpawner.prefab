@@ -63,7 +63,10 @@ MonoBehaviour:
   - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
   - {fileID: 1955572374327358, guid: e4a06deb45dc00cc2802f9e2ff1799e8, type: 3}
   - {fileID: 1955572374327358, guid: ffd1365a325c976c3838e11bb54010a8, type: 3}
+  - {fileID: 1955572374327358, guid: 5ef16d3b4cbdeea88be3a606ef29dc81, type: 3}
   timeInterval: 1
+  nextTime: 0
+  triggerChecked: 1
 --- !u!65 &4749227633763872768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75,5 +78,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 70, y: 70, z: 70}
-  m_Center: {x: 0, y: 0, z: 35}
+  m_Size: {x: 70, y: 70, z: 200}
+  m_Center: {x: 0, y: 0, z: 100}
