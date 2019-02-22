@@ -268,3 +268,9 @@ MonoBehaviour:
   additionalSpeed: {x: 3.4028235e+38, y: 3.4028235e+38, z: 3.4028235e+38}
   additionalSpeedMin: {x: 0, y: 0, z: -5}
   additionalSpeedMax: {x: 0, y: 0, z: 5}
+  activationDistance: 300
+  active: 0
+  lifePoints: 2
+  invincible: 0
+  delegateDestroy: 1
+  deathExplosion: {fileID: 0}

@@ -7,31 +7,23 @@ public class QuadEnemyController : MonoBehaviour {
     public GameObject explosionObject;
     public float explosionDistance = 5;
     PlayerController player;
+    EnemyBaseBehaviour baseBehaviour;
     
 	// Use this for initialization
 	void Start () {
 	    player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+	    baseBehaviour = gameObject.GetComponent<EnemyBaseBehaviour>();
 	}
 	
 	// Update is called once per frame
-	void Update () {	    
-	    if(Vector3.Distance(player.gameObject.transform.position, transform.position)  < explosionDistance){
+	void Update () {
+	    bool mustExplode = (baseBehaviour.lifePoints <= 0F) || 
+	                       (Vector3.Distance(player.gameObject.transform.position, transform.position)  < explosionDistance);
+	    if(mustExplode){
+	    	Instantiate(explosionObject, transform.position, Quaternion.identity);
 	        Destroy(this.gameObject);
-	        Instantiate(explosionObject, transform.position, Quaternion.identity);
 	    }
 	}
-	
-	void OnCollisionEnter(Collision coll){
-	    if(coll.collider.gameObject.tag == "Player")
-	        Debug.Log("player");	        
-	}
-	
-	void OnTriggerEnter(Collider coll){
-	    if(coll.gameObject.tag == "PlayerProjectile"){
-	        Destroy(this.gameObject);
-	        Instantiate(explosionObject, transform.position, Quaternion.identity);
-	    }
-	        
-	}
+
 	
 }

@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\ObliqueProjection.cs" />
      <Compile Include="Assets\Scripts\PentagonEnemyController.cs" />
+     <Compile Include="Assets\Scripts\PixelExplosionController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PrismaBuilder.cs" />
      <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
@@ -74,7 +75,6 @@
      <Compile Include="Assets\Scripts\Rotation.cs" />
      <Compile Include="Assets\Scripts\SphereExplosionController.cs" />
      <Compile Include="Assets\Scripts\TimeDestroyer.cs" />
-     <Compile Include="Assets\Scripts\TriangleEnemyController.cs" />
      <Compile Include="Assets\Scripts\TunnelScroller.cs" />
      <None Include="Assets\Shaders\Wireframe.cginc" />
      <None Include="Assets\Shaders\WireframeTransparentCulled.shader" />

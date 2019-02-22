@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1494214159602332824}
   - component: {fileID: 9033698825971909861}
   - component: {fileID: 7583694301709798503}
-  - component: {fileID: 1098471387834252268}
   - component: {fileID: 2755183233807776445}
   - component: {fileID: 3031700329915658297}
   - component: {fileID: 4093064152582134890}
@@ -71,18 +70,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1098471387834252268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3614383686743414761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c289d4ffcbc4bb896ab06f6faf6f4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2755183233807776445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +86,12 @@ MonoBehaviour:
   additionalSpeed: {x: 3.4028235e+38, y: 3.4028235e+38, z: 3.4028235e+38}
   additionalSpeedMin: {x: -7, y: -7, z: -5}
   additionalSpeedMax: {x: 7, y: 7, z: 5}
+  activationDistance: 850
   active: 0
+  lifePoints: 6
+  invincible: 0
+  delegateDestroy: 1
+  deathExplosion: {fileID: 0}
 --- !u!135 &3031700329915658297
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -125,6 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da44479703feefadbfb1b146ce72e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteorPrefabs:
+  - {fileID: 3614383686743414761, guid: f7ee906d866d338a6a2742eec7fb0933, type: 3}
+  finalExplosion: {fileID: 5575415825495200115, guid: 010ebd90857f99180b77ca7362cd1f09,
+    type: 3}
   minScale: 2
   maxScale: 4
 --- !u!1 &6405470851220692972

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 114842638479918076}
   - component: {fileID: 65213830182805560}
   - component: {fileID: 54382931061627622}
-  - component: {fileID: 114665178058897884}
   - component: {fileID: 2307207275652704102}
   - component: {fileID: 2307912837873047764}
   m_Layer: 0
@@ -84,18 +83,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
---- !u!114 &114665178058897884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358897099069198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c289d4ffcbc4bb896ab06f6faf6f4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2307207275652704102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +115,11 @@ MonoBehaviour:
   additionalSpeed: {x: 3.4028235e+38, y: 3.4028235e+38, z: 3.4028235e+38}
   additionalSpeedMin: {x: 0, y: 0, z: -5}
   additionalSpeedMax: {x: 0, y: 0, z: 5}
+  activationDistance: 300
+  lifePoints: 2
+  invincible: 0
+  deathExplosion: {fileID: 5575415825495200115, guid: 010ebd90857f99180b77ca7362cd1f09,
+    type: 3}
 --- !u!1 &1920322507531494
 GameObject:
   m_ObjectHideFlags: 0

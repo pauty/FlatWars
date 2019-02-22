@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PentagonEnemyController : MonoBehaviour
 {
+
     public float visibilityInterval = 2F;
     Renderer visibleRenderer;
     Renderer invisibleRenderer;
     float nextTime;
+    EnemyBaseBehaviour baseBehaviour;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,8 @@ public class PentagonEnemyController : MonoBehaviour
         visibleRenderer.enabled = true;
         invisibleRenderer.enabled = false;
         nextTime = Time.time + visibilityInterval;
+        
+        baseBehaviour = gameObject.GetComponent<EnemyBaseBehaviour>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class PentagonEnemyController : MonoBehaviour
             visibleRenderer.enabled = !visibleRenderer.enabled;
             invisibleRenderer.enabled = !invisibleRenderer.enabled;
             nextTime = Time.time + visibilityInterval;
-        }
+            baseBehaviour.invincible = invisibleRenderer.enabled;
+        }        
     }
 }
