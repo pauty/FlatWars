@@ -88,10 +88,11 @@ MonoBehaviour:
   additionalSpeedMax: {x: 7, y: 7, z: 5}
   activationDistance: 850
   active: 0
-  lifePoints: 6
+  healthPoints: 4
   invincible: 0
   delegateDestroy: 1
-  deathExplosion: {fileID: 5575415825495200115, guid: 010ebd90857f99180b77ca7362cd1f09,
+  deathExplosion: {fileID: 0}
+  fuelObject: {fileID: 3677833770369802840, guid: 9fa4e4f01913741c29576ca8b05cafca,
     type: 3}
 --- !u!135 &3031700329915658297
 SphereCollider:
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorPrefabs:
   - {fileID: 3614383686743414761, guid: e3abd6219521d8d0c90368fdce482c7d, type: 3}
-  finalExplosion: {fileID: 5575415825495200115, guid: 010ebd90857f99180b77ca7362cd1f09,
+  finalExplosion: {fileID: 5575415825495200115, guid: ed663a89bbf949b53a3d1bfb8d00f2ed,
     type: 3}
   minScale: 2
   maxScale: 4

@@ -15,7 +15,6 @@ public class MoveScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update(){
 	    traslation = -(player.speed*Time.deltaTime);
-        transform.Translate(traslation);	        
-	    
+        transform.Translate(traslation, Space.World);	        	    
 	}
 }

@@ -9,7 +9,7 @@ TagManager:
   - PlayerProjectile
   - Explosion
   - EnemySpawner
-  - ActivationWall
+  - Fuel
   layers:
   - Default
   - TransparentFX
@@ -46,7 +46,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: ShadowPlane
-    uniqueID: 2708325813
     locked: 0

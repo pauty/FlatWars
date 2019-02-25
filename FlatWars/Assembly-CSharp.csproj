@@ -53,13 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraShoot.cs" />
      <Compile Include="Assets\Scripts\BoundDestroyer.cs" />
      <Compile Include="Assets\Scripts\chaseController.cs" />
      <Compile Include="Assets\Scripts\DoorController.cs" />
      <Compile Include="Assets\Scripts\EnemyBaseBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnemyGroupController.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
-     <Compile Include="Assets\Scripts\EnemySpawnerCoordinator.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HazardSpawner.cs" />
      <Compile Include="Assets\Scripts\LaserController.cs" />
@@ -76,6 +76,8 @@
      <Compile Include="Assets\Scripts\SphereExplosionController.cs" />
      <Compile Include="Assets\Scripts\TimeDestroyer.cs" />
      <Compile Include="Assets\Scripts\TunnelScroller.cs" />
+     <Compile Include="Assets\Scripts\UIController.cs" />
+     <Compile Include="Assets\ShootListener.cs" />
      <None Include="Assets\Shaders\Wireframe.cginc" />
      <None Include="Assets\Shaders\WireframeTransparentCulled.shader" />
      <None Include="Assets\Shaders\Wireframe.shader" />

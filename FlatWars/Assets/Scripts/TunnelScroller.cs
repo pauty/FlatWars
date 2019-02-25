@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TunnelScroller : MonoBehaviour {
 
-    public float speed = 1;
     float totalDistance; 
     Vector3 traslation;
     float sectorDepth = 1F;   
@@ -28,7 +27,7 @@ public class TunnelScroller : MonoBehaviour {
             totalDistance = 0F;
         }
         else{
-            transform.Translate(traslation);
+            transform.Translate(traslation, Space.World);
         	totalDistance += -traslation.z;
         }
 	        

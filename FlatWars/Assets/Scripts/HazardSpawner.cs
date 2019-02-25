@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HazardSpawner: MonoBehaviour {
     
-    public GameController gameController;
+    public PrismaBuilder tunnel;
     public GameObject[] HazardPrefabs = new GameObject[3];
     public float timeInterval = 1f;
     public float nextTime;
@@ -15,7 +15,7 @@ public class HazardSpawner: MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		if(Time.time >= nextTime && triggerChecked){
 		    int i = Random.Range(0, HazardPrefabs.Length);
 		    //i = 3;
@@ -39,8 +39,8 @@ public class HazardSpawner: MonoBehaviour {
 		            wall.transform.Rotate(new Vector3(0,0,-90));
 		            break;
 		    }
-		    float scaleX = gameController.tunnelWidthSteps*gameController.tunnelSectorWidth/10;
-		    float scaleY = gameController.tunnelHeightSteps*gameController.tunnelSectorHeight/10;
+		    float scaleX = tunnel.widthSteps*tunnel.sectorWidth/10;
+		    float scaleY = tunnel.heightSteps*tunnel.sectorHeight/10;
 		    if(r >= 3){
 		        //swap
 		        float tmp = scaleX;
@@ -60,7 +60,7 @@ public class HazardSpawner: MonoBehaviour {
 		    if(wallScaleXY != null){
 		        wallScaleXY.transform.localScale = new Vector3(scaleX, scaleY, 1);
 		    }
-		    wall.transform.localScale = new Vector3(1, 1, gameController.tunnelSectorDepth/10);
+		    wall.transform.localScale = new Vector3(1, 1, tunnel.sectorDepth/10);
 		   
 		    //nextTime = Time.time + timeInterval;  
 		    triggerChecked = false;

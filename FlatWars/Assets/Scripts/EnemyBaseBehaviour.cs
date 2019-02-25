@@ -16,17 +16,20 @@ public class EnemyBaseBehaviour : MonoBehaviour
     Rigidbody rb;
     PlayerController player;
     
-    [Header("Healt Settings")]
-    public float lifePoints = 2F;
+    [Header("Health Settings")]
+    public float healthPoints = 2F;
     public bool invincible = false;
     public bool delegateDestroy = false;
     public GameObject deathExplosion = null;
+    public GameObject fuelObject = null;
+    GameController gameController;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+		gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 		if(additionalSpeed.x == float.MaxValue){
 		    additionalSpeed.x = Random.Range(additionalSpeedMin.x, additionalSpeedMax.x);
 		    additionalSpeed.y = Random.Range(additionalSpeedMin.y, additionalSpeedMax.y);
@@ -71,16 +74,15 @@ public class EnemyBaseBehaviour : MonoBehaviour
     }
     
    void defaultDestroyCheck(){
-        if(this.lifePoints <= 0F){
+        if(this.healthPoints <= 0F){
             //if an explosion effect is set, play it
 	        if(deathExplosion != null){
-	            GameObject explosion = Instantiate(deathExplosion, transform.position, transform.rotation) as GameObject;
-                ParticleSystem parts = explosion.GetComponent<ParticleSystem>();
-                float totalDuration = parts.duration + parts.startLifetime;
-                Destroy(explosion, totalDuration);
+	            Instantiate(deathExplosion, transform.position, transform.rotation);
             }
             //destroy gameobject
             Destroy(this.gameObject);
+            if(gameController.spawnFuel())
+                Instantiate(fuelObject, transform.position, transform.rotation);
         }
 	}
     
@@ -94,11 +96,11 @@ public class EnemyBaseBehaviour : MonoBehaviour
 	void OnTriggerEnter(Collider coll){
 	    if(coll.gameObject.CompareTag("PlayerProjectile")){
 	        if(!invincible)
-	            lifePoints -= 1F;
+	            healthPoints -= 1F;
 	        Destroy(coll.gameObject);
 	    }
 	    else if(coll.gameObject.CompareTag("Explosion"))
-	        lifePoints -= 6F;
+	        healthPoints -= 6F;
     }
     
     

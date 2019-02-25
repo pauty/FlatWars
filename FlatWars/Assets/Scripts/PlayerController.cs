@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     
+    
+    [Header("Health Settings")]
+    public float maxHealthPoints;
+    public float healthPoints;
+    public float healthPointsDecreaseSpeed;
+    
+    [Header("Movement Settings")]
     public float minSpeed = 40F;
     public float baseSpeed = 70F;
     public float maxSpeed = 140F;
- 
-    Rigidbody rb;
-    Vector3 knockback;
     public Vector3 speed = new Vector3(0F, 0F, 70F);
     public float rotationSpeed = 500F;
+    Rigidbody rb;
     Vector3 updateSpeed;
+    
+    [Header("Attack Settings")]
     public GameObject projectile;
-    bool canShoot = true;
     public float fireInterval = 0.2F;
+    bool canShoot = true;
     float fireTime;
     Transform gun1;
     Transform gun2;
+    
     Animator animator;
     
 	// Use this for initialization
@@ -29,11 +37,11 @@ public class PlayerController : MonoBehaviour {
 		gun1 = transform.Find("Gun1");
 		gun2 = transform.Find("Gun2");
 		animator = GetComponent<Animator>();
+		healthPoints = Mathf.Min(healthPoints, maxHealthPoints);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () {	
 	     bool shooting = Input.GetButton("Fire");
 	     if(shooting && canShoot){
 	        //FIRE	        
@@ -57,12 +65,13 @@ public class PlayerController : MonoBehaviour {
 	     }
 	     
 	     animator.SetFloat("RotationValue", Input.GetAxis("RButton") - Input.GetAxis("LButton"));
-	     
-         
+	             
          float dx = Input.GetAxis("JoyLX");
          float dy = Input.GetAxis("JoyLY");
-         Vector3 movement = new Vector3(dx, -dy, 0f).normalized;
-         rb.velocity = movement * 16;           
+         Vector3 movement = new Vector3(dx, dy, 0f).normalized;
+         rb.velocity = movement * 16;      
+         
+         healthPoints = Mathf.Max(0F, healthPoints - healthPointsDecreaseSpeed*Time.deltaTime);
 		
 	}
 	
@@ -70,14 +79,21 @@ public class PlayerController : MonoBehaviour {
 	    speed = updateSpeed;
 	}
 	
+	/*
+	public float GetHealthPoints(){
+	    return this.healthPoints;
+	}
+	*/
 	
-	void OnTriggerEnter(Collider coll){
-	    if(coll.gameObject.CompareTag("Explosion"))
-	        Debug.Log("EXPLODED");
+	public void AddHealthPoints(float amount){
+	    if(healthPoints > 0)
+	        healthPoints += amount;
 	}
 	
-    void OnCollisionStay(Collision collision)
-    {
-
-    }
+	void OnTriggerEnter(Collider coll){ 
+	    if(coll.gameObject.CompareTag("Fuel")){
+	        this.AddHealthPoints(10);
+	    }
+	}
+	
 }

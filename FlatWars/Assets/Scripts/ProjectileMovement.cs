@@ -13,7 +13,7 @@ public class ProjectileMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
-		rb.velocity = new Vector3(0, 0, speed);
+		rb.velocity = transform.forward * speed;
 		
 		Destroy(this.gameObject, timeToLive);
 	}

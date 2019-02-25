@@ -29,6 +29,13 @@ public class PrismaBuilder : MonoBehaviour
     
     public Vector3[] basev = null;
     
+    public bool buildOnStart = true;
+    
+    void Start(){
+        if(buildOnStart)
+            this.buildPrisma();
+    }
+    
     [ContextMenu("buildPrisma")]
     public void buildPrisma(){
         

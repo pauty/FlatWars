@@ -8,7 +8,7 @@ public class PixelExplosionController : MonoBehaviour
     void Start()
     {
         ParticleSystem parts = gameObject.GetComponent<ParticleSystem>();
-        float totalDuration = parts.duration + parts.startLifetime;
+        float totalDuration = parts.main.duration + parts.main.startLifetime.constantMax;
         Destroy(this.gameObject, totalDuration);        
     }
 

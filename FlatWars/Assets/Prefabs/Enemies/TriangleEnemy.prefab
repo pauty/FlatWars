@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eea8a504dfd54d7bb589d502369692c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRotation: -1
+  xRotation: -60
   yRotation: 0
   zRotation: 0
   relativeToWorld: 0
@@ -116,9 +116,13 @@ MonoBehaviour:
   additionalSpeedMin: {x: 0, y: 0, z: -5}
   additionalSpeedMax: {x: 0, y: 0, z: 5}
   activationDistance: 300
-  lifePoints: 2
+  active: 0
+  healthPoints: 2
   invincible: 0
+  delegateDestroy: 0
   deathExplosion: {fileID: 5575415825495200115, guid: 010ebd90857f99180b77ca7362cd1f09,
+    type: 3}
+  fuelObject: {fileID: 3677833770369802840, guid: 9fa4e4f01913741c29576ca8b05cafca,
     type: 3}
 --- !u!1 &1920322507531494
 GameObject:

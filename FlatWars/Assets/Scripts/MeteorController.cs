@@ -10,6 +10,7 @@ public class MeteorController : MonoBehaviour
     public float maxScale = 6F;
     float scale;
     EnemyBaseBehaviour baseBehaviour;
+    GameController gameController;
     
     // Start is called before the first frame update
     void Start()
@@ -17,10 +18,11 @@ public class MeteorController : MonoBehaviour
         scale = Random.Range(minScale, maxScale);
         transform.localScale = new Vector3(scale, scale, scale);
         baseBehaviour = gameObject.GetComponent<EnemyBaseBehaviour>();
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
 
 	void Update(){
-	    if(baseBehaviour.lifePoints <= 0F)
+	    if(baseBehaviour.healthPoints <= 0F)
 	        this.SplitAndDestroy(); 	        
 	}
 	
@@ -45,6 +47,9 @@ public class MeteorController : MonoBehaviour
             if(finalExplosion != null)
                 Instantiate(finalExplosion, transform.position, Quaternion.identity);
         }
+        if(gameController.spawnFuel()){
+	        Instantiate(baseBehaviour.fuelObject, transform.position, transform.rotation);
+	    }
         Destroy(this.gameObject);     
 	}
 

@@ -36,8 +36,8 @@ public class ObliqueProjection: MonoBehaviour {
 
 public class ObliqueProjection: MonoBehaviour {
     float xc, yc;
-    float maxW = 18F;
-    float maxH = 10F;
+    public float maxW = 18F;
+    public float maxH = 10F;
     Camera cam;
     Vector3 mousePosition;
     Vector3 prevMousePosition;

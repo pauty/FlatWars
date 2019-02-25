@@ -1,57 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     
-    //public EnemySpawner enemySpawner;
-    //public WallSpawnerLogic wallSpawner;
-    public PrismaBuilder tunnelPrismaBuilder;
-    
-    public PrismaBuilder.TypeEnum tunnelType = PrismaBuilder.TypeEnum.Grid;
-    //used if grid
-    public int tunnelWidthSteps = 3;
-    public int tunnelHeightSteps = 2;
-    public int tunnelDepthSteps = 14;
-    
-    public float tunnelSectorWidth = 12;
-    public float tunnelSectorHeight = 10;
-    public float tunnelSectorDepth = 50;
-    //used if radial
-    public float tunnelRadius = 12;
-    public int tunnelRadialSteps = 6;
-    
-    public bool tunnelReverse = false;
-    public bool tunnelDoubleFace = false;
-    public bool tunnelAddBases = false;
+    bool gamePaused = false;
+    public UIController UI;
+    public float spawnFuelProbabilityIncrement = 0.1F;
+    public float spawnFuelProbabilityDecrementRate = 2F;
+    public float spawnFuelProbability = 0.5F;
     
 	// Use this for initialization
-	void Start () {
-	
-	    tunnelPrismaBuilder.type = tunnelType;
-	    if(tunnelType == PrismaBuilder.TypeEnum.Grid){
-	        tunnelPrismaBuilder.widthSteps = tunnelWidthSteps;
-            tunnelPrismaBuilder.heightSteps = tunnelHeightSteps;
-            tunnelPrismaBuilder.depthSteps = tunnelDepthSteps;
-            
-            tunnelPrismaBuilder.sectorWidth = tunnelSectorWidth;
-            tunnelPrismaBuilder.sectorHeight = tunnelSectorHeight;
-            tunnelPrismaBuilder.sectorDepth = tunnelSectorDepth;
-        }
-        else if(tunnelType == PrismaBuilder.TypeEnum.Radial){
-            tunnelPrismaBuilder.radius = tunnelRadius;
-            tunnelPrismaBuilder.radialSteps = tunnelRadialSteps;
-        }
-        tunnelPrismaBuilder.reverse = tunnelReverse;
-        tunnelPrismaBuilder.doubleFace = tunnelDoubleFace;
-        tunnelPrismaBuilder.addBases = tunnelAddBases;
-        
-        tunnelPrismaBuilder.buildPrisma();
+	void Start () {        
+        gamePaused = false;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	    spawnFuelProbability = Mathf.Min(1F, spawnFuelProbability + spawnFuelProbabilityIncrement*Time.deltaTime);
+	    
+	    if(Input.GetButtonDown("Pause")){
+	        if(!gamePaused){
+                this.PauseGame();
+	        }
+	        else{
+	            this.ResumeGame();
+	        }
+	    }
 		
+	}
+	
+	public void PauseGame(){
+	    Time.timeScale = 0F;
+	    gamePaused = true;
+	    UI.ShowPauseMenu(true);
+	}
+	
+	public void ResumeGame(){
+	    Time.timeScale = 1F;
+	    gamePaused = false;
+	    UI.ShowPauseMenu(false);
+	}
+	
+	public void RestartGame(){
+	    this.ResumeGame();
+	    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+	
+	public void QuitGame(){
+	    this.ResumeGame();
+	    SceneManager.LoadScene("MainMenu");
+	}
+	
+	public bool spawnFuel(){
+	    bool spawn = Random.Range(0F, 1F) < spawnFuelProbability ? true : false;
+	    if(spawn)
+	        spawnFuelProbability = spawnFuelProbability/spawnFuelProbabilityDecrementRate;
+	    return spawn;	        
 	}
 }

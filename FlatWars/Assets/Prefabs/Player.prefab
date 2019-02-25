@@ -207,10 +207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e90ca8a90d14f6f954995101f8dc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  healthPoints: 50
+  healthPointsDecreaseSpeed: 0.2
   minSpeed: 40
   baseSpeed: 75
   maxSpeed: 110
-  speed: {x: 0, y: 0, z: 70}
+  speed: {x: 0, y: 0, z: 50}
   rotationSpeed: 500
   projectile: {fileID: 1450314835312072, guid: 12e0ba1be8d1542e1886ed9cf2d59cd1, type: 3}
   fireInterval: 0.2

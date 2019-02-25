@@ -17,8 +17,8 @@ public class Rotation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    if(!relativeToWorld)
-		    transform.Rotate(xRotation, yRotation, zRotation, Space.Self);
+		    transform.Rotate(xRotation*Time.deltaTime, yRotation*Time.deltaTime, zRotation*Time.deltaTime, Space.Self);
 		else
-		    transform.Rotate(xRotation, yRotation, zRotation, Space.World);
+		    transform.Rotate(xRotation*Time.deltaTime, yRotation*Time.deltaTime, zRotation*Time.deltaTime, Space.World);
 	}
 }
