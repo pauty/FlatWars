@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   healthPoints: 50
-  healthPointsDecreaseSpeed: 0.2
+  healthPointsDecreaseSpeed: 0.6
   minSpeed: 40
   baseSpeed: 75
   maxSpeed: 110

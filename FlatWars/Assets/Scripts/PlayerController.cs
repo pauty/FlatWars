@@ -79,21 +79,9 @@ public class PlayerController : MonoBehaviour {
 	    speed = updateSpeed;
 	}
 	
-	/*
-	public float GetHealthPoints(){
-	    return this.healthPoints;
-	}
-	*/
-	
 	public void AddHealthPoints(float amount){
-	    if(healthPoints > 0)
-	        healthPoints += amount;
-	}
-	
-	void OnTriggerEnter(Collider coll){ 
-	    if(coll.gameObject.CompareTag("Fuel")){
-	        this.AddHealthPoints(10);
-	    }
+	    if(healthPoints > 0F)
+	        healthPoints = Mathf.Min(maxHealthPoints, healthPoints + amount);
 	}
 	
 }

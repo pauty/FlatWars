@@ -55,11 +55,12 @@
   <ItemGroup>
      <Compile Include="Assets\CameraShoot.cs" />
      <Compile Include="Assets\Scripts\BoundDestroyer.cs" />
-     <Compile Include="Assets\Scripts\chaseController.cs" />
+     <Compile Include="Assets\Scripts\ChaseController.cs" />
      <Compile Include="Assets\Scripts\DoorController.cs" />
      <Compile Include="Assets\Scripts\EnemyBaseBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnemyGroupController.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\FuelController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HazardSpawner.cs" />
      <Compile Include="Assets\Scripts\LaserController.cs" />

@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 1274197803605935304}
   - component: {fileID: 7401645809454130389}
   - component: {fileID: 7895284932514438976}
+  - component: {fileID: 5204574628488838766}
   m_Layer: 0
   m_Name: QuadEnemy
   m_TagString: Untagged
@@ -206,7 +207,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 118
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &4940472542692310779
 BoxCollider:
@@ -276,3 +277,20 @@ MonoBehaviour:
   deathExplosion: {fileID: 0}
   fuelObject: {fileID: 3677833770369802840, guid: 9fa4e4f01913741c29576ca8b05cafca,
     type: 3}
+--- !u!114 &5204574628488838766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195992342510497985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd61ddd80424219f947716a7ee475dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseProbability: 0.05
+  maxChaseSpeed: 2.4
+  chaseSpeedIncrement: 1
+  maxChaseDistance: 400
+  minChaseDistance: 1
