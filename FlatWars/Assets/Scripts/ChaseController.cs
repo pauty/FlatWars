@@ -5,11 +5,9 @@ using UnityEngine;
 public class ChaseController : MonoBehaviour
 {
     public float chaseProbability = 0.1F;
-    public float maxChaseSpeed = 2.4F;
-    public float chaseSpeedIncrement = 1F;
     public float maxChaseDistance = 400F;
     public float minChaseDistance = 1F;
-    Vector3 chaseSpeed;
+    public float maxChaseSpeed = 30F;
     bool isChasing;
     Rigidbody rb;
     GameObject player;
@@ -22,26 +20,26 @@ public class ChaseController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(isChasing){
-            float distance = Vector3.Distance(transform.position, player.transform.position);
-            if(minChaseDistance < distance && distance < maxChaseDistance){ 
-                if(player.transform.position.x > transform.position.x)
-                    chaseSpeed.x = Mathf.Min(maxChaseSpeed, chaseSpeed.x + chaseSpeedIncrement*Time.deltaTime);
-                else if(player.transform.position.x < transform.position.x)
-                    chaseSpeed.x = Mathf.Max(-maxChaseSpeed, chaseSpeed.x - chaseSpeedIncrement*Time.deltaTime);
-                    
-                if(player.transform.position.y > transform.position.y)
-                    chaseSpeed.y = Mathf.Min(maxChaseSpeed, chaseSpeed.y + chaseSpeedIncrement*Time.deltaTime);
-                else if(player.transform.position.y < transform.position.y)
-                    chaseSpeed.y = Mathf.Max(-maxChaseSpeed, chaseSpeed.y - chaseSpeedIncrement*Time.deltaTime);
-                    
+            Vector3 v = player.transform.position - transform.position;
+            if(minChaseDistance < v.magnitude && v.magnitude < maxChaseDistance){
+                //chaseSpeed = Mathf.Min(maxChaseSpeed, chaseSpeed + chaseSpeedIncrement*Time.deltaTime);                              
                 Vector3 vel = rb.velocity;
-                vel.x = chaseSpeed.x;
-                vel.y = chaseSpeed.y;
-                rb.velocity = chaseSpeed;
+                vel.x = v.x * maxChaseSpeed /  v.magnitude;
+                vel.y = v.y * maxChaseSpeed /  v.magnitude;
+                rb.velocity = vel;
+                
+                /*float xForce = v.x * chaseSpeed / Mathf.Max(1F, v.magnitude);
+                float yForce = v.y * chaseSpeed / Mathf.Max(1F, v.magnitude);
+                rb.AddForce(new Vector3(xForce, yForce, 0F));*/
+               
             }
+            else{ 
+                //chaseSpeed = Mathf.Max(0F, chaseSpeed - chaseSpeedIncrement*Time.deltaTime);
+            }
+            
             
         }
     }

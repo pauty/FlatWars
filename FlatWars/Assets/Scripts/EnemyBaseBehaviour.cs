@@ -22,6 +22,10 @@ public class EnemyBaseBehaviour : MonoBehaviour
     public bool delegateDestroy = false;
     public GameObject deathExplosion = null;
     public GameObject fuelObject = null;
+    
+    [Header("Player Damage Settings")]
+    public float damage = 5F;
+    
     GameController gameController;
     
     // Start is called before the first frame update
@@ -90,7 +94,7 @@ public class EnemyBaseBehaviour : MonoBehaviour
     
     void OnCollisionEnter(Collision coll){
 	    if(coll.collider.gameObject.CompareTag("Player"))
-	        Debug.Log("player hit");	        
+	        coll.collider.gameObject.GetComponent<PlayerController>().TakeDamage(damage);	        
 	}
 	
 	void OnTriggerEnter(Collider coll){

@@ -19,13 +19,15 @@ public class QuadEnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    bool mustExplode = (baseBehaviour.healthPoints <= 0F) || 
-	                       (Vector3.Distance(player.gameObject.transform.position, transform.position)  < explosionDistance);
-	    if(mustExplode){
+	    bool destroy = baseBehaviour.healthPoints <= 0F;
+	    bool detonate = Vector3.Distance(player.gameObject.transform.position, transform.position)  < explosionDistance;
+	    if(destroy || detonate){
 	    	Instantiate(explosionObject, transform.position, Quaternion.identity);
 	        Destroy(this.gameObject);
-	        if(gameController.spawnFuel()){
-	            Instantiate(baseBehaviour.fuelObject, transform.position, transform.rotation);
+	        if(destroy){
+	            if(gameController.spawnFuel()){
+	                Instantiate(baseBehaviour.fuelObject, transform.position, transform.rotation);
+	            }
 	        }
 	    }
 	}

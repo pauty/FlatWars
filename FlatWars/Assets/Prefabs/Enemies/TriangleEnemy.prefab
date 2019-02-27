@@ -76,7 +76,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358897099069198}
   serializedVersion: 2
-  m_Mass: 100000
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -137,11 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd61ddd80424219f947716a7ee475dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseProbability: 0.1
-  maxChaseSpeed: 2.4
-  chaseSpeedIncrement: 1
+  chaseProbability: 0.2
   maxChaseDistance: 400
-  minChaseDistance: 1
+  minChaseDistance: 50
+  maxChaseSpeed: 150
 --- !u!1 &1920322507531494
 GameObject:
   m_ObjectHideFlags: 0
