@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
     Animator animator;
     Renderer rend;
     
+    
 	// Use this for initialization
 	void Start () {
 		fireTime = Time.time;
@@ -48,7 +49,6 @@ public class PlayerController : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rend = transform.Find("Mesh").GetComponent<Renderer>();
 		healthPoints = Mathf.Min(healthPoints, maxHealthPoints);
-		
 	}
 	
 	// Update is called once per frame

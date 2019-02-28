@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class UIController : MonoBehaviour
 {
      public GameObject pauseFirstSelection;
+     public GameObject gameoverFirstSelection;
      GameObject selectedObj;
      public Image playerHealthImage; 
      public GameObject pauseMenuPanel = null;
@@ -47,6 +48,9 @@ public class UIController : MonoBehaviour
      public void ShowGameOver(bool show){
         if(gameOverPanel != null)
             gameOverPanel.SetActive(show);    
+            EventSystem.current.SetSelectedGameObject(null);
+            if(show)
+                EventSystem.current.SetSelectedGameObject(gameoverFirstSelection);
      }
      
  }

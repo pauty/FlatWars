@@ -5,28 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     
-    bool gamePaused = false;
+    
     public UIController UI;
     public float spawnFuelProbabilityIncrement = 0.1F;
     public float spawnFuelProbabilityDecrementRate = 2F;
     public float spawnFuelProbability = 0.5F;
+    bool gamePaused = false;
+    bool gameOver = false;
+    
+    PlayerController player;
     
 	// Use this for initialization
 	void Start () {        
         gamePaused = false;
-		
+        gameOver = false;
+        UI.ShowPauseMenu(false);
+        UI.ShowGameOver(false);
+		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	    spawnFuelProbability = Mathf.Min(1F, spawnFuelProbability + spawnFuelProbabilityIncrement*Time.deltaTime);
 	    
-	    if(Input.GetButtonDown("Pause")){
-	        if(!gamePaused){
-                this.PauseGame();
+	    
+	    if(!gameOver){
+	        if(Input.GetButtonDown("Pause")){
+	            if(!gamePaused){
+                    this.PauseGame();
+	            }
+	            else{
+	                this.ResumeGame();
+	            }
 	        }
-	        else{
-	            this.ResumeGame();
+	        
+	        if(player.healthPoints <= 0F){
+	            this.GameOver();
 	        }
 	    }
 		
@@ -43,6 +57,12 @@ public class GameController : MonoBehaviour {
 	    gamePaused = false;
 	    UI.ShowPauseMenu(false);
 	}
+	
+	public void GameOver(){
+	    gameOver = true;
+	    Time.timeScale = 0F;
+	    UI.ShowGameOver(true);
+	} 
 	
 	public void RestartGame(){
 	    this.ResumeGame();
