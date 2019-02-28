@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour {
     Animator animator;
     Renderer rend;
     
+    [Header("Audio Settings")] 
+    public AudioClip shootSound;
+    public AudioClip wallHitSound;    
+    AudioSource audiosource;
     
 	// Use this for initialization
 	void Start () {
@@ -49,56 +53,59 @@ public class PlayerController : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rend = transform.Find("Mesh").GetComponent<Renderer>();
 		healthPoints = Mathf.Min(healthPoints, maxHealthPoints);
+		audiosource = gameObject.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {	
-	
-	    //shoot
-	     bool shooting = Input.GetButton("Fire");
-	     if(shooting && canShoot){
-	        //FIRE	        
-	        Instantiate(projectile, gun1.position, gun1.rotation);	          
-	        Instantiate(projectile, gun2.position, gun2.rotation);	        
-	        Debug.Log(0);
-	        fireTime = Time.time;	        
-	     }
-	     canShoot = (Time.time - fireTime >= fireInterval) || !shooting;
-	     
-	     //velocity
-	     if((Input.GetButton("SpeedUp") && speed.z < maxSpeed))
-	        updateSpeed.z += 1;
-	     else if((Input.GetButton("SpeedDown") && speed.z > minSpeed))
-	        updateSpeed.z -= 1;
-	     else{
-	        if(speed.z < baseSpeed)
+	    if(Time.timeScale > 0F){
+	        //shoot
+	         bool shooting = Input.GetButton("Fire");
+	         if(shooting && canShoot){
+	            //FIRE	        
+	            Instantiate(projectile, gun1.position, gun1.rotation);	          
+	            Instantiate(projectile, gun2.position, gun2.rotation);	        
+	            Debug.Log(0);
+	            fireTime = Time.time;	
+	            audiosource.clip = shootSound;
+	            audiosource.Play();        
+	         }
+	         canShoot = (Time.time - fireTime >= fireInterval) || !shooting;
+	         
+	         //velocity
+	         if((Input.GetButton("SpeedUp") && speed.z < maxSpeed))
 	            updateSpeed.z += 1;
-	        else if(speed.z > baseSpeed)
+	         else if((Input.GetButton("SpeedDown") && speed.z > minSpeed))
 	            updateSpeed.z -= 1;
-	     }
-	     
-	     //rotation
-	     animator.SetFloat("RotationValue", Input.GetAxis("RButton") - Input.GetAxis("LButton"));
-	     
-	     //movement      
-         float dx = Input.GetAxis("JoyLX");
-         float dy = Input.GetAxis("JoyLY");
-         Vector3 movement = new Vector3(dx, dy, 0f).normalized;
-         rb.velocity = movement * movementSpeed;      
-         
-         healthPoints = Mathf.Max(0F, healthPoints - healthPointsDecreaseSpeed*Time.deltaTime);
-         
-         if(invincible){
-            if(Time.time >= invincibilityEndTime){
-                rend.enabled = true;
-                invincible = false;
-            }
-            else if(Time.time >= flickeringSwitchTime){
-                rend.enabled = !rend.enabled;             
-                flickeringSwitchTime = Time.time + flickeringInterval;
-            }
-
-         }
+	         else{
+	            if(speed.z < baseSpeed)
+	                updateSpeed.z += 1;
+	            else if(speed.z > baseSpeed)
+	                updateSpeed.z -= 1;
+	         }
+	         
+	         //rotation
+	         animator.SetFloat("RotationValue", Input.GetAxis("RButton") - Input.GetAxis("LButton"));
+	         
+	         //movement      
+             float dx = Input.GetAxis("JoyLX");
+             float dy = Input.GetAxis("JoyLY");
+             Vector3 movement = new Vector3(dx, dy, 0f).normalized;
+             rb.velocity = movement * movementSpeed;      
+             
+             healthPoints = Mathf.Max(0F, healthPoints - healthPointsDecreaseSpeed*Time.deltaTime);
+             
+             if(invincible){
+                if(Time.time >= invincibilityEndTime){
+                    rend.enabled = true;
+                    invincible = false;
+                }
+                else if(Time.time >= flickeringSwitchTime){
+                    rend.enabled = !rend.enabled;             
+                    flickeringSwitchTime = Time.time + flickeringInterval;
+                }
+             }
+       }
 		
 	}
 	
@@ -122,6 +129,8 @@ public class PlayerController : MonoBehaviour {
 	void OnCollisionEnter(Collision coll){
 	    if(coll.gameObject.CompareTag("Wall")){
 	        this.TakeDamage(this.damageOnWallHit);
+	        audiosource.clip = wallHitSound;
+	        audiosource.Play();
 	    }
 	}
 	
