@@ -8,6 +8,9 @@ public class MeteorController : MonoBehaviour
     public GameObject finalExplosion = null;
     public float minScale = 2F;
     public float maxScale = 6F;
+    public int minChildren = 2;
+    public int  maxChildren = 4;
+    
     float scale;
     EnemyBaseBehaviour baseBehaviour;
     GameController gameController;
@@ -30,15 +33,10 @@ public class MeteorController : MonoBehaviour
         GameObject childObject;
         MeteorController childMeteor;
         if(this.maxScale > this.minScale){
-            int r = Random.Range(0, 3) + 2;
+            int r = Random.Range(minChildren, maxChildren+1);
             //int idx;
-            Vector3 spawnPos = transform.position;
             for(int i = 0; i < r; i++){
-                //spawnPos.x = transform.position.x + (i-2)*2F; 
-                //spawnPos.y = transform.position.y + (i-2)*2F;
-                spawnPos.z = transform.position.z + (i-2)*2F;
-                //idx = Random.Range(0, meteorPrefabs.Length);
-        	    childObject = Instantiate(meteorPrefabs[0], spawnPos, Quaternion.identity);
+        	    childObject = Instantiate(meteorPrefabs[0], transform.position + Random.onUnitSphere*2.5F, Random.rotation);
         	    childMeteor = childObject.GetComponent<MeteorController>();
         	    childMeteor.maxScale = Mathf.Max(childMeteor.minScale, this.scale - 1.5F);          	    
             }
@@ -48,7 +46,8 @@ public class MeteorController : MonoBehaviour
                 Instantiate(finalExplosion, transform.position, Quaternion.identity);
         }
         if(gameController.spawnFuel()){
-	        Instantiate(baseBehaviour.fuelObject, transform.position, transform.rotation);
+	        for(int i = 0; i < 3; i++)
+	            Instantiate(baseBehaviour.fuelObject, transform.position + Random.onUnitSphere*2F, Random.rotation);
 	    }
         Destroy(this.gameObject);     
 	}

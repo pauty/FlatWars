@@ -8,7 +8,9 @@ public class SphereExplosionController : MonoBehaviour
     public float maxRadius = 7F;
     public float explosionSpeed = 3F;
     public float damage = 10F;
+    public float destroyDelay = 1F;
     float currentScale;
+    bool stop = false;
     
     // Start is called before the first frame update
     void Start()
@@ -19,10 +21,13 @@ public class SphereExplosionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentScale += explosionSpeed*Time.deltaTime;
-        transform.localScale = new Vector3 (currentScale, currentScale, currentScale);
-        if(currentScale >= maxRadius){
-            Destroy(this.gameObject);
+        if(!stop){
+            currentScale += explosionSpeed*Time.deltaTime;
+            transform.localScale = new Vector3 (currentScale, currentScale, currentScale);
+            if(currentScale >= maxRadius){
+                stop = true;
+                Destroy(this.gameObject, destroyDelay);
+            }
         }
     }
     

@@ -85,8 +85,10 @@ public class EnemyBaseBehaviour : MonoBehaviour
             }
             //destroy gameobject
             Destroy(this.gameObject);
-            if(gameController.spawnFuel())
-                Instantiate(fuelObject, transform.position, transform.rotation);
+            if(gameController.spawnFuel()){
+	            for(int i = 0; i < 3; i++)
+	                Instantiate(fuelObject, transform.position + Random.onUnitSphere*2F, Random.rotation);
+            }
         }
 	}
     

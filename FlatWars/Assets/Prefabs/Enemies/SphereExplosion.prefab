@@ -138,7 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRadius: 15
-  explosionSpeed: 25
+  explosionSpeed: 30
+  damage: 10
+  destroyDelay: 0.3
 --- !u!114 &7676383725136525071
 MonoBehaviour:
   m_ObjectHideFlags: 0

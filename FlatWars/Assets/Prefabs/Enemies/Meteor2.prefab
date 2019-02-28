@@ -62,7 +62,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3614383686743414761}
   serializedVersion: 2
-  m_Mass: 100000
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   deathExplosion: {fileID: 0}
   fuelObject: {fileID: 3677833770369802840, guid: 9fa4e4f01913741c29576ca8b05cafca,
     type: 3}
+  damage: 5
 --- !u!135 &3031700329915658297
 SphereCollider:
   m_ObjectHideFlags: 0
