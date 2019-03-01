@@ -69,7 +69,7 @@ class HeadTracker:
         
         self.initOk = True
         self.webcamThread = self.webcamPollThread(videosource)
-        self. initOk = self.webcamThread.initOk
+        self.initOk = self.webcamThread.initOk
     
         root = tk.Tk()       
         self.screen_width = root.winfo_screenwidth()

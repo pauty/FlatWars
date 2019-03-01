@@ -4712,7 +4712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62588581a20c2ef14972ed7101dd9171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionSound: {fileID: 8300000, guid: cc74c44e79dcfbdbbb5f1da754c75614, type: 3}
+  explosionSound: {fileID: 8300000, guid: f16e55ba7b8676831b22bbd70458ce66, type: 3}
 --- !u!82 &6214516959861447366
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4725,7 +4725,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour {
 	            }
 	        }
 	        
-	        if(player.healthPoints <= 0F){
+	        if(player.gameOverConditionReached){
 	            this.GameOver();
 	        }
 	    }
@@ -49,12 +49,14 @@ public class GameController : MonoBehaviour {
 	public void PauseGame(){
 	    Time.timeScale = 0F;
 	    gamePaused = true;
+	    player.enabled = false;
 	    UI.ShowPauseMenu(true);
 	}
 	
 	public void ResumeGame(){
 	    Time.timeScale = 1F;
 	    gamePaused = false;
+	    player.enabled = true;
 	    UI.ShowPauseMenu(false);
 	}
 	

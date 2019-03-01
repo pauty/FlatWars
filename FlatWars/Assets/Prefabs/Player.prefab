@@ -222,8 +222,13 @@ MonoBehaviour:
   projectile: {fileID: 1450314835312072, guid: 12e0ba1be8d1542e1886ed9cf2d59cd1, type: 3}
   fireInterval: 0.2
   flickeringInterval: 0.02
-  shootSound: {fileID: 8300000, guid: b2cd4e360d417edab9c02d36267de4ea, type: 3}
-  wallHitSound: {fileID: 8300000, guid: 43f49a58160f5ed9295103e5f36eaca9, type: 3}
+  playerExplosion: {fileID: 5575415825495200115, guid: bd78fb9a11e0aa02a95ca865ce66020c,
+    type: 3}
+  shootSound: {fileID: 8300000, guid: 4634d87db3ee27e2ba25ff6396ce2101, type: 3}
+  damageSound: {fileID: 8300000, guid: 2405f1001623427678d58a57a5934524, type: 3}
+  shootVolume: 0.45
+  damageVolume: 1
+  gameOverConditionReached: 0
 --- !u!54 &54901399916244428
 Rigidbody:
   m_ObjectHideFlags: 0
