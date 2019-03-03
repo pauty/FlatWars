@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1101630460780364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4732351229420956}
+  - component: {fileID: 114674640074014166}
+  - component: {fileID: 4749227633763872768}
+  m_Layer: 0
+  m_Name: HazardSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4732351229420956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101630460780364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -140.11522, y: -27.547667, z: -110.97475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114674640074014166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101630460780364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8bcf4875e404a9dabcbd565e3d5bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  HazardPrefabs:
+  - {fileID: 1103046049326416, guid: 7e0c5669d04aa4a928623fa595be546e, type: 3}
+  - {fileID: 1095724243129144, guid: d8b8175efe63141b6a47d577d3965600, type: 3}
+  - {fileID: 1955572374327358, guid: 41f757744d54249248429f6a4f92b5e9, type: 3}
+  - {fileID: 1065292807364866, guid: 03789329ee7ef4c269e78673198f69e6, type: 3}
+  - {fileID: 7581524037091289389, guid: da178aaf6825017cd9c0264427a009b0, type: 3}
+  - {fileID: 1065292807364866, guid: 1bcd2de1430d987f5bfa32cf75e34d71, type: 3}
+  - {fileID: 1065292807364866, guid: 8aa7c809f3f87a0e6aeaa9dc91e8015a, type: 3}
+  - {fileID: 1065292807364866, guid: cf17d360381e1630f80238eca8368dd1, type: 3}
+  - {fileID: 1065292807364866, guid: 9bb7c4c2e8a53d354b0e49fe965610e0, type: 3}
+  - {fileID: 1065292807364866, guid: 951363b6f8606546393ab4271ff0eefc, type: 3}
+  - {fileID: 7581524037091289389, guid: a22359dc1c19d36539f9fb3ff0493e72, type: 3}
+  - {fileID: 7581524037091289389, guid: a02f3ae59e0945e8485c9f74e3fb3fdf, type: 3}
+  - {fileID: 7581524037091289389, guid: cee6a1bf45682827f904ae3854154721, type: 3}
+  - {fileID: 7581524037091289389, guid: 8da220466af3e42339c92fd468735957, type: 3}
+  - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
+  - {fileID: 1955572374327358, guid: e4a06deb45dc00cc2802f9e2ff1799e8, type: 3}
+  - {fileID: 1955572374327358, guid: ffd1365a325c976c3838e11bb54010a8, type: 3}
+  - {fileID: 1955572374327358, guid: 5ef16d3b4cbdeea88be3a606ef29dc81, type: 3}
+  timeInterval: 1
+  nextTime: 0
+  triggerChecked: 1
+--- !u!65 &4749227633763872768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101630460780364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 70, y: 70, z: 200}
+  m_Center: {x: 0, y: 0, z: 100}
