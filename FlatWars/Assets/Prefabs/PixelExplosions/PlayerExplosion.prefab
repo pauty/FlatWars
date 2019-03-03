@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.9
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -227,11 +227,11 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.972549, g: 0.5926269, b: 0.19999999, a: 1}
-        key1: {r: 1, g: 0.90883553, b: 0, a: 1}
-        key2: {r: 0.06763973, g: 0.8962264, b: 0.26297763, a: 0}
-        key3: {r: 0.26788893, g: 0.6750425, b: 0.8113208, a: 0}
-        key4: {r: 0.735849, g: 0.499822, b: 0.499822, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 0.8246275, b: 0.254717, a: 1}
+        key2: {r: 1, g: 0.6882562, b: 0, a: 0}
+        key3: {r: 1, g: 0.82363623, b: 0.25499353, a: 0}
+        key4: {r: 1, g: 1, b: 1, a: 0}
         key5: {r: 0.735849, g: 0.499822, b: 0.499822, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
@@ -240,7 +240,7 @@ ParticleSystem:
         ctime2: 39321
         ctime3: 52428
         ctime4: 65535
-        ctime5: 49151
+        ctime5: 65535
         ctime6: 0
         ctime7: 0
         atime0: 0
@@ -286,7 +286,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1267,14 +1267,14 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.020702228
-          value: 0.9352948
+          time: 0
+          value: 0.5117642
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1282,8 +1282,8 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.99583524
-          value: 0.33766985
+          time: 1
+          value: 0
           inSlope: -1.9104887
           outSlope: -1.9104887
           tangentMode: 0
@@ -5002,7 +5002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62588581a20c2ef14972ed7101dd9171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionSound: {fileID: 8300000, guid: f16e55ba7b8676831b22bbd70458ce66, type: 3}
 --- !u!82 &2460173003519355735
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5013,7 +5012,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 72a24e867a14bc75887d6279257aa04e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

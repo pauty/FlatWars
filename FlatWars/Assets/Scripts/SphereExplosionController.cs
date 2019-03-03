@@ -11,11 +11,14 @@ public class SphereExplosionController : MonoBehaviour
     public float destroyDelay = 1F;
     float currentScale;
     bool stop = false;
+    AudioSource audiosource;
     
     // Start is called before the first frame update
     void Start()
     {
         currentScale = 1F;
+        //audiosource = gameObject.GetComponent<AudioSource>();
+        //audiosource.Play();
     }
 
     // Update is called once per frame

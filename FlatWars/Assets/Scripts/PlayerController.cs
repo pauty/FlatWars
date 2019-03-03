@@ -67,47 +67,60 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {	
-        //shoot
-         if(Input.GetButtonDown("Fire"))
-            shooting = true;
-         else if(Input.GetButtonUp("Fire"))
-            shooting = false;
-         if(shooting && canShoot){
-            //FIRE	        
-            Instantiate(projectile, gun1.position, gun1.rotation);	          
-            Instantiate(projectile, gun2.position, gun2.rotation);	        
-            Debug.Log(0);
-            fireTime = Time.time;	
-            audiosource.clip = shootSound;
-            audiosource.volume = shootVolume;
-            audiosource.Play();        
-         }
-         canShoot = (Time.time - fireTime >= fireInterval) || !shooting;
-         
-         //velocity
-         if((Input.GetButton("SpeedUp") && speed.z < maxSpeed))
-            updateSpeed.z += 1;
-         else if((Input.GetButton("SpeedDown") && speed.z > minSpeed))
-            updateSpeed.z -= 1;
-         else{
-            if(speed.z < baseSpeed)
+	    healthPoints = Mathf.Max(0F, healthPoints - healthPointsDecreaseSpeed*Time.deltaTime);
+	    
+	    if(healthPoints > 0F){
+            //shoot
+             if(Input.GetButtonDown("Fire"))
+                shooting = true;
+             else if(Input.GetButtonUp("Fire"))
+                shooting = false;
+             if(shooting && canShoot){
+                //FIRE	        
+                Instantiate(projectile, gun1.position, gun1.rotation);	          
+                Instantiate(projectile, gun2.position, gun2.rotation);	        
+                Debug.Log(0);
+                fireTime = Time.time;	
+                audiosource.clip = shootSound;
+                audiosource.volume = shootVolume;
+                audiosource.Play();        
+             }
+             canShoot = (Time.time - fireTime >= fireInterval) || !shooting;
+             
+             //velocity
+             if((Input.GetButton("SpeedUp") && speed.z < maxSpeed))
                 updateSpeed.z += 1;
-            else if(speed.z > baseSpeed)
+             else if((Input.GetButton("SpeedDown") && speed.z > minSpeed))
                 updateSpeed.z -= 1;
+             else{
+                if(speed.z < baseSpeed)
+                    updateSpeed.z += 1;
+                else if(speed.z > baseSpeed)
+                    updateSpeed.z -= 1;
+             }
+             
+             //rotation
+             animator.SetFloat("RotationValue", Input.GetAxis("RButton") - Input.GetAxis("LButton"));
+             
+             //movement      
+             float dx = Input.GetAxis("JoyLX");
+             float dy = Input.GetAxis("JoyLY");
+             Vector3 movement = new Vector3(dx, dy, 0f).normalized;
+             rb.velocity = movement * movementSpeed;      
+             
+                        
+             if(invincible && deathAnimationEndTime < 0F){
+                if(Time.time >= invincibilityEndTime){
+                    rend.enabled = true;
+                    invincible = false;
+                }
+                else if(Time.time >= flickeringSwitchTime){
+                    rend.enabled = !rend.enabled;             
+                    flickeringSwitchTime = Time.time + flickeringInterval;
+                }
+             }
          }
-         
-         //rotation
-         animator.SetFloat("RotationValue", Input.GetAxis("RButton") - Input.GetAxis("LButton"));
-         
-         //movement      
-         float dx = Input.GetAxis("JoyLX");
-         float dy = Input.GetAxis("JoyLY");
-         Vector3 movement = new Vector3(dx, dy, 0f).normalized;
-         rb.velocity = movement * movementSpeed;      
-         
-         healthPoints = Mathf.Max(0F, healthPoints - healthPointsDecreaseSpeed*Time.deltaTime);
-         
-         if(healthPoints <= 0F){
+         else{
             updateSpeed.z = 0F;
             if(deathAnimationEndTime < 0F){
                 if(playerExplosion != null){           
@@ -115,22 +128,11 @@ public class PlayerController : MonoBehaviour {
                     ParticleSystem parts = explosion.GetComponent<ParticleSystem>();
                     float particleDuration = parts.main.duration + parts.main.startLifetime.constantMax;
                     deathAnimationEndTime = Time.time + particleDuration;
-                    rend.enabled = false;
+                    transform.Find("Mesh").gameObject.SetActive(false);
                 }
             }
             else if(Time.time >= deathAnimationEndTime){
                 gameOverConditionReached = true;
-            }
-         }
-         
-         if(invincible && deathAnimationEndTime < 0F){
-            if(Time.time >= invincibilityEndTime){
-                rend.enabled = true;
-                invincible = false;
-            }
-            else if(Time.time >= flickeringSwitchTime){
-                rend.enabled = !rend.enabled;             
-                flickeringSwitchTime = Time.time + flickeringInterval;
             }
          }
    

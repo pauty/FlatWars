@@ -1,0 +1,77 @@
+Base path: /home/pauty/Unity/Hub/Editor/2018.3.5f1/Editor/Data
+Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  api=15 insize=2059 outsize=897 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=1176 outsize=1885 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=3070 outsize=198945 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=10881 outsize=17885 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=10881 outsize=40753 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=4855 outsize=18505 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=4855 outsize=24733 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=3396 outsize=5169 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=18299 outsize=16185 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=18299 outsize=24361 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=18299 outsize=32865 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=18299 outsize=34697 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=18299 outsize=56953 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=5435 outsize=13257 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=3072 outsize=5665 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=1806 outsize=3765 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=1454 outsize=3597 ok=1
+Cmd: compileComputeKernel
+  api=15 insize=2044 outsize=1869 ok=1
+Cmd: compileComputeKernel
+  api=18 insize=2044 outsize=4157 ok=1
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+
+Quitting shader compiler process

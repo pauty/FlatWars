@@ -5,7 +5,6 @@ using UnityEngine;
 public class PixelExplosionController : MonoBehaviour
 {
 
-    public AudioClip explosionSound;
     
     // Start is called before the first frame update
     void Start()
@@ -15,9 +14,8 @@ public class PixelExplosionController : MonoBehaviour
         float clipDuration = 0;
         AudioSource audiosource = gameObject.GetComponent<AudioSource>();
         if(audiosource != null){
-            audiosource.clip = explosionSound;
             audiosource.Play();
-            clipDuration = explosionSound.length;
+            clipDuration = audiosource.clip.length;
         } 
         Destroy(this.gameObject, Mathf.Max(clipDuration, particleDuration));   
     

@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour {
 	public void GameOver(){
 	    gameOver = true;
 	    Time.timeScale = 0F;
+	    player.enabled = false;
 	    UI.ShowGameOver(true);
 	} 
 	
