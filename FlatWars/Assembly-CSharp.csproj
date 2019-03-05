@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraShoot.cs" />
+     <Compile Include="Assets\Scripts\AudioController.cs" />
      <Compile Include="Assets\Scripts\BoundDestroyer.cs" />
      <Compile Include="Assets\Scripts\ChaseController.cs" />
      <Compile Include="Assets\Scripts\DoorController.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\MeteorController.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
+     <Compile Include="Assets\Scripts\MovingWall.cs" />
      <Compile Include="Assets\Scripts\ObliqueProjection.cs" />
      <Compile Include="Assets\Scripts\PentagonEnemyController.cs" />
      <Compile Include="Assets\Scripts\PixelExplosionController.cs" />
