@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: 0, y: -4, z: 0}
+  movingSpeed: {x: 0, y: -6, z: 0}
 --- !u!1 &1320136273209660
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: -4, y: 0, z: 0}
+  movingSpeed: {x: -6, y: 0, z: 0}
 --- !u!1 &1350946265994932
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: 0, y: 4, z: 0}
+  movingSpeed: {x: 0, y: 6, z: 0}
 --- !u!1 &1842657462110618
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: 4, y: 0, z: 0}
+  movingSpeed: {x: 8, y: 0, z: 0}
 --- !u!1 &3402353988857422143
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: 4, y: 0, z: 0}
+  movingSpeed: {x: 6, y: 0, z: 0}
 --- !u!1 &4116449416649803607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: 0, y: -4, z: 0}
+  movingSpeed: {x: 0, y: -6, z: 0}
 --- !u!1 &8674068703607063927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7c311003b2e53179f4982d539180ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: {x: 0, y: -4, z: 0}
+  movingSpeed: {x: 0, y: -8, z: 0}
 --- !u!1001 &2907485115591601032
 PrefabInstance:
   m_ObjectHideFlags: 0

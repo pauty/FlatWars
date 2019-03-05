@@ -125,12 +125,17 @@ public class PlayerController : MonoBehaviour {
          else{
             updateSpeed.z = 0F;
             if(deathAnimationEndTime < 0F){
+                float particleDuration = 0.5F;
                 if(playerExplosion != null){           
                     GameObject explosion = Instantiate(playerExplosion, transform.position, transform.rotation);
                     ParticleSystem parts = explosion.GetComponent<ParticleSystem>();
-                    float particleDuration = parts.main.duration + parts.main.startLifetime.constantMax;
-                    deathAnimationEndTime = Time.time + particleDuration;
-                    transform.Find("Mesh").gameObject.SetActive(false);
+                    particleDuration = parts.main.duration + parts.main.startLifetime.constantMax;
+                }
+                deathAnimationEndTime = Time.time + particleDuration;
+                transform.Find("Mesh").gameObject.SetActive(false);
+                GameObject audioController = GameObject.FindWithTag("AudioController");
+                if(audioController != null){
+                    audioController.GetComponent<AudioController>().FadeOut(1F);
                 }
             }
             else if(Time.time >= deathAnimationEndTime){

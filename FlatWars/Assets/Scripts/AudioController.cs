@@ -14,15 +14,17 @@ public class AudioController : MonoBehaviour
     
     public void FadeOut(float fadeTime){
         StartCoroutine(this.FadeOutCoroutine(fadeTime));
-        StopCoroutine(this.FadeOutCoroutine(fadeTime));
+        //StopCoroutine(this.FadeOutCoroutine(fadeTime));
     }
 
     private IEnumerator FadeOutCoroutine(float fadeTime) {
         float startVolume = audiosource.volume;
-        Debug.Log("coroutine");
+        float prevTime;
+        float currentTime = Time.realtimeSinceStartup;
         while (audiosource.volume > 0) {
-            audiosource.volume -= startVolume * Time.deltaTime/fadeTime;
- 
+            prevTime = currentTime;
+            currentTime = Time.realtimeSinceStartup;
+            audiosource.volume -= startVolume*(currentTime - prevTime)/fadeTime;
             yield return null;
         }
  
