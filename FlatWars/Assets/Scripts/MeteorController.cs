@@ -54,7 +54,7 @@ public class MeteorController : MonoBehaviour
                 Instantiate(finalExplosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
-        if(gameController.spawnFuel()){
+        if(gameController.SpawnFuel()){
 	        for(int i = 0; i < 3; i++)
 	            Instantiate(baseBehaviour.fuelObject, transform.position + Random.onUnitSphere*2F, Random.rotation);
 	    }  

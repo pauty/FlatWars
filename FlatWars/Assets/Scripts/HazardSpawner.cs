@@ -6,12 +6,13 @@ public class HazardSpawner: MonoBehaviour {
     
     public PrismaBuilder tunnel;
     public GameObject[] HazardPrefabs = new GameObject[3];
-    public float timeInterval = 1f;
-    public float nextTime;
-    public bool triggerChecked = true;
+    public float timeIntervalMin = 1F;
+    public float timeIntervalMax = 2F;
+    float nextTime;
+    bool triggerChecked = true;
 	// Use this for initialization
 	void Start () {
-	    nextTime = Time.time + timeInterval;
+	    nextTime = Time.time + timeIntervalMin;
 	}
 	
 	// Update is called once per frame
@@ -68,12 +69,12 @@ public class HazardSpawner: MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider coll){
-	    nextTime = Time.time + timeInterval;
+	    nextTime = Time.time + Random.Range(timeIntervalMin, timeIntervalMax);
 	    triggerChecked = true;
 	}
 	
 	void OnTriggerStay(Collider coll){
-	    nextTime = Time.time + timeInterval;
+	    nextTime = Time.time + Random.Range(timeIntervalMin, timeIntervalMax);
 	    triggerChecked = true;
 	}
 	

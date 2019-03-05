@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\EnemyGroupController.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\FuelController.cs" />
+     <Compile Include="Assets\Scripts\FuelSpawner.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HazardSpawner.cs" />
      <Compile Include="Assets\Scripts\LaserController.cs" />

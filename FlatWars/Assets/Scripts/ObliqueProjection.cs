@@ -2,60 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-public class ObliqueProjection: MonoBehaviour {
-    Vector3 mousePosition;
-    float xc, yc;
-    float maxW = 1.5F;
-    float maxH = 1F;
-    Camera cam;
-    Vector3 cameraLocalPosition;
-    
-    void Update(){
-        mousePosition = Input.mousePosition;
-        xc = (2*mousePosition.x-Screen.width)/(Screen.width);
-        yc = (2*mousePosition.y-Screen.height)/(Screen.height);    
-        cam = Camera.main;
-        cameraLocalPosition = cam.transform.localPosition;
-        cameraLocalPosition.x = -xc*maxW;
-        cameraLocalPosition.y = yc*maxH;
-        cam.transform.localPosition = cameraLocalPosition;
-        SetObliqueness(xc, -yc);
-    }
-    
-    void SetObliqueness(float horizObl, float vertObl) {
-        Matrix4x4 mat  = Camera.main.projectionMatrix;
-        mat[0, 2] = horizObl;
-        mat[1, 2] = vertObl;
-        Camera.main.projectionMatrix = mat;
-    }
-}
-*/
-
 [RequireComponent(typeof(Camera))]
 
 public class ObliqueProjection: MonoBehaviour {
-    float xc, yc;
-    public float maxW = 18F;
-    public float maxH = 10F;
+
+    public PrismaBuilder tunnel = null;
+    public float maxW = 1F;
+    public float maxH = 1F;
     Camera cam;
-    Vector3 mousePosition;
     Vector3 prevMousePosition;
-    Vector3 cameraLocalPosition;
-  
     
     void Start(){
-        cam = this.gameObject.GetComponent<Camera>();
+        cam = gameObject.GetComponent<Camera>();
+        if(tunnel != null){
+            maxW = (tunnel.widthSteps*tunnel.sectorWidth)/2;
+            maxH = (tunnel.heightSteps*tunnel.sectorHeight)/2;
+        }
     }
     
     void Update(){
-        mousePosition = Input.mousePosition;
+        float xc, yc;
+        Vector3 mousePosition = Input.mousePosition;
         mousePosition = (mousePosition + prevMousePosition)/2;
         prevMousePosition = mousePosition;
         xc = (2*mousePosition.x-Screen.width)/(Screen.width);
         yc = (2*mousePosition.y-Screen.height)/(Screen.height);    
-        cam = Camera.main;
-        cameraLocalPosition = cam.transform.localPosition;
+        xc = Mathf.Min(1F, Mathf.Max(-1F, xc));
+        yc = Mathf.Min(1F, Mathf.Max(-1F, yc));
+        Vector3 cameraLocalPosition = cam.transform.localPosition;
         cameraLocalPosition.x = -xc*maxW;
         cameraLocalPosition.y = yc*maxH;
         cam.transform.localPosition = cameraLocalPosition;

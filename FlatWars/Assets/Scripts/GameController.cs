@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour {
 	    SceneManager.LoadScene("MainMenu");
 	}
 	
-	public bool spawnFuel(){
+	public bool SpawnFuel(){
 	    bool spawn = Random.Range(0F, 1F) < spawnFuelProbability ? true : false;
 	    if(spawn)
 	        spawnFuelProbability = spawnFuelProbability/spawnFuelProbabilityDecrementRate;

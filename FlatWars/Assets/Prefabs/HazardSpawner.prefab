@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8bcf4875e404a9dabcbd565e3d5bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  tunnel: {fileID: 0}
   HazardPrefabs:
   - {fileID: 1103046049326416, guid: 7e0c5669d04aa4a928623fa595be546e, type: 3}
   - {fileID: 1095724243129144, guid: d8b8175efe63141b6a47d577d3965600, type: 3}
@@ -64,9 +64,8 @@ MonoBehaviour:
   - {fileID: 1955572374327358, guid: e4a06deb45dc00cc2802f9e2ff1799e8, type: 3}
   - {fileID: 1955572374327358, guid: ffd1365a325c976c3838e11bb54010a8, type: 3}
   - {fileID: 1955572374327358, guid: 5ef16d3b4cbdeea88be3a606ef29dc81, type: 3}
-  timeInterval: 1
-  nextTime: 0
-  triggerChecked: 1
+  timeIntervalMin: 1
+  timeIntervalMax: 1
 --- !u!65 &4749227633763872768
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     public Vector3 speed = new Vector3(0F, 0F, 70F);
     public float rotationSpeed = 500F;
     public float movementSpeed = 16F;
+    public float totalDistance;
     Rigidbody rb;
     Vector3 updateSpeed;
     
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 		healthPoints = Mathf.Min(healthPoints, maxHealthPoints);
 		audiosource = gameObject.GetComponent<AudioSource>();
 		gameOverConditionReached = false;
+		totalDistance = 0F;
 	}
 	
 	// Update is called once per frame
@@ -134,13 +136,12 @@ public class PlayerController : MonoBehaviour {
             else if(Time.time >= deathAnimationEndTime){
                 gameOverConditionReached = true;
             }
-         }
-   
-		
+         }		
 	}
 	
 	void LateUpdate(){
 	    speed = updateSpeed;
+	    totalDistance = totalDistance + updateSpeed.z*Time.deltaTime;
 	}
 	
 	public void AddHealthPoints(float amount){
