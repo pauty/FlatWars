@@ -461,6 +461,11 @@ PrefabInstance:
       propertyPath: tunnel
       value: 
       objectReference: {fileID: 957985752}
+    - target: {fileID: 114674640074014166, guid: 5772dd0fdd290403d83328738f18a9e7,
+        type: 3}
+      propertyPath: spawnModes.Array.data[0].probabilityWeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5772dd0fdd290403d83328738f18a9e7, type: 3}
 --- !u!1 &1117039409

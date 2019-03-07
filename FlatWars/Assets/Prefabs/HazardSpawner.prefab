@@ -45,29 +45,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tunnel: {fileID: 0}
-  HazardPrefabs:
-  - {fileID: 1103046049326416, guid: 7e0c5669d04aa4a928623fa595be546e, type: 3}
-  - {fileID: 1095724243129144, guid: d8b8175efe63141b6a47d577d3965600, type: 3}
-  - {fileID: 1955572374327358, guid: 41f757744d54249248429f6a4f92b5e9, type: 3}
-  - {fileID: 1065292807364866, guid: 03789329ee7ef4c269e78673198f69e6, type: 3}
-  - {fileID: 7581524037091289389, guid: da178aaf6825017cd9c0264427a009b0, type: 3}
-  - {fileID: 1065292807364866, guid: 1bcd2de1430d987f5bfa32cf75e34d71, type: 3}
-  - {fileID: 1065292807364866, guid: 8aa7c809f3f87a0e6aeaa9dc91e8015a, type: 3}
-  - {fileID: 1065292807364866, guid: cf17d360381e1630f80238eca8368dd1, type: 3}
-  - {fileID: 1065292807364866, guid: 9bb7c4c2e8a53d354b0e49fe965610e0, type: 3}
-  - {fileID: 1065292807364866, guid: 951363b6f8606546393ab4271ff0eefc, type: 3}
-  - {fileID: 7581524037091289389, guid: a22359dc1c19d36539f9fb3ff0493e72, type: 3}
-  - {fileID: 7581524037091289389, guid: a02f3ae59e0945e8485c9f74e3fb3fdf, type: 3}
-  - {fileID: 7581524037091289389, guid: cee6a1bf45682827f904ae3854154721, type: 3}
-  - {fileID: 7581524037091289389, guid: 8da220466af3e42339c92fd468735957, type: 3}
-  - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
-  - {fileID: 1955572374327358, guid: e4a06deb45dc00cc2802f9e2ff1799e8, type: 3}
-  - {fileID: 1955572374327358, guid: ffd1365a325c976c3838e11bb54010a8, type: 3}
-  - {fileID: 1955572374327358, guid: 5ef16d3b4cbdeea88be3a606ef29dc81, type: 3}
-  - {fileID: 1955572374327358, guid: 4a9bfa5525bd1a5d4be84886b49834ff, type: 3}
-  - {fileID: 1955572374327358, guid: 5fca2f9c8f3b3c03b93a4f172c48a9c7, type: 3}
-  timeIntervalMin: 1
-  timeIntervalMax: 1
+  hazardFamilies:
+  - name: Walls
+    probabilityWeight: 0
+    prefabs:
+    - {fileID: 1103046049326416, guid: 7e0c5669d04aa4a928623fa595be546e, type: 3}
+    - {fileID: 1095724243129144, guid: d8b8175efe63141b6a47d577d3965600, type: 3}
+    - {fileID: 1955572374327358, guid: 41f757744d54249248429f6a4f92b5e9, type: 3}
+    - {fileID: 1955572374327358, guid: e4a06deb45dc00cc2802f9e2ff1799e8, type: 3}
+    - {fileID: 1955572374327358, guid: ffd1365a325c976c3838e11bb54010a8, type: 3}
+    - {fileID: 1955572374327358, guid: 5ef16d3b4cbdeea88be3a606ef29dc81, type: 3}
+    - {fileID: 1955572374327358, guid: 4a9bfa5525bd1a5d4be84886b49834ff, type: 3}
+    - {fileID: 1955572374327358, guid: 5fca2f9c8f3b3c03b93a4f172c48a9c7, type: 3}
+  - name: Enemies
+    probabilityWeight: 0
+    prefabs:
+    - {fileID: 1065292807364866, guid: 03789329ee7ef4c269e78673198f69e6, type: 3}
+    - {fileID: 7581524037091289389, guid: da178aaf6825017cd9c0264427a009b0, type: 3}
+    - {fileID: 1065292807364866, guid: 1bcd2de1430d987f5bfa32cf75e34d71, type: 3}
+    - {fileID: 1065292807364866, guid: 8aa7c809f3f87a0e6aeaa9dc91e8015a, type: 3}
+    - {fileID: 1065292807364866, guid: cf17d360381e1630f80238eca8368dd1, type: 3}
+    - {fileID: 1065292807364866, guid: 9bb7c4c2e8a53d354b0e49fe965610e0, type: 3}
+    - {fileID: 1065292807364866, guid: 951363b6f8606546393ab4271ff0eefc, type: 3}
+    - {fileID: 7581524037091289389, guid: a22359dc1c19d36539f9fb3ff0493e72, type: 3}
+    - {fileID: 7581524037091289389, guid: a02f3ae59e0945e8485c9f74e3fb3fdf, type: 3}
+  - name: Meteors
+    probabilityWeight: 0
+    prefabs:
+    - {fileID: 7581524037091289389, guid: cee6a1bf45682827f904ae3854154721, type: 3}
+    - {fileID: 7581524037091289389, guid: 8da220466af3e42339c92fd468735957, type: 3}
+    - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
+  spawnModes:
+  - name: Mixed
+    probabilityWeight: 30
+    probabilities:
+    - 30
+    - 40
+    - 30
+  - name: Walls And Enemies
+    probabilityWeight: 20
+    probabilities:
+    - 70
+    - 30
+    - 0
+  - name: Enemies Only
+    probabilityWeight: 20
+    probabilities:
+    - 0
+    - 100
+    - 0
+  - name: Meteors Only
+    probabilityWeight: 30
+    probabilities:
+    - 0
+    - 0
+    - 100
+  changeModeIntervalMin: 30
+  changeModeIntervalMax: 30
+  spawnIntervalMin: 1
+  spawnIntervalMax: 1
+  currentProbabilities: []
 --- !u!65 &4749227633763872768
 BoxCollider:
   m_ObjectHideFlags: 0
