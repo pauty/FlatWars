@@ -9,29 +9,46 @@ public class ObliqueProjection: MonoBehaviour {
     public PrismaBuilder tunnel = null;
     public float maxW = 1F;
     public float maxH = 1F;
+    Vector3 origin;
     Camera cam;
     Vector3 prevMousePosition;
+    GameObject player = null;
+    bool followingPlayer = false;
     
     void Start(){
+        origin = transform.localPosition;
         cam = gameObject.GetComponent<Camera>();
         if(tunnel != null){
             maxW = (tunnel.widthSteps*tunnel.sectorWidth)/2;
             maxH = (tunnel.heightSteps*tunnel.sectorHeight)/2;
         }
+        player = GameObject.FindWithTag("Player");
     }
     
     void Update(){
-        float xc, yc;
+        if(Input.GetKeyDown("f")){
+            followingPlayer = !followingPlayer;
+        }
+        
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = (mousePosition + prevMousePosition)/2;
         prevMousePosition = mousePosition;
-        xc = (2*mousePosition.x-Screen.width)/(Screen.width);
-        yc = (2*mousePosition.y-Screen.height)/(Screen.height);    
-        xc = Mathf.Min(1F, Mathf.Max(-1F, xc));
-        yc = Mathf.Min(1F, Mathf.Max(-1F, yc));
+        
+        float xc, yc;
+        if(player != null && followingPlayer){
+            xc = -player.transform.localPosition.x/maxW;
+            yc = player.transform.localPosition.y/maxH;
+        }
+        else{
+            xc = (2*mousePosition.x-Screen.width)/(Screen.width);
+            yc = (2*mousePosition.y-Screen.height)/(Screen.height);    
+            xc = Mathf.Min(1F, Mathf.Max(-1F, xc));
+            yc = Mathf.Min(1F, Mathf.Max(-1F, yc));
+        }
+        
         Vector3 cameraLocalPosition = cam.transform.localPosition;
-        cameraLocalPosition.x = -xc*maxW;
-        cameraLocalPosition.y = yc*maxH;
+        cameraLocalPosition.x = origin.x - xc*maxW;
+        cameraLocalPosition.y = origin.y + yc*maxH;
         cam.transform.localPosition = cameraLocalPosition;
         SetObliqueness(xc, -yc);
     }

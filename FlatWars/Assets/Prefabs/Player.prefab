@@ -210,15 +210,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   healthPoints: 50
-  healthPointsDecreaseSpeed: 1
+  healthPointsDecreaseSpeed: 1.5
   damageOnWallHit: 10
   invincibilityDuration: 1.5
   minSpeed: 40
   baseSpeed: 75
   maxSpeed: 110
   speed: {x: 0, y: 0, z: 50}
-  rotationSpeed: 500
+  rotationSpeed: 1000
   movementSpeed: 16
+  totalDistance: 0
   projectile: {fileID: 1450314835312072, guid: 12e0ba1be8d1542e1886ed9cf2d59cd1, type: 3}
   fireInterval: 0.2
   flickeringInterval: 0.02

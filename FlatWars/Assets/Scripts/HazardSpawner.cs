@@ -7,7 +7,7 @@ public class NamedRandomizable{
     public string name;
     public float probabilityWeight;
     
-    public static int GetRandom(NamedRandomizable[] rands){
+    public static int GetRandomIdx(NamedRandomizable[] rands){
         float total = 0;
         for(int i = 0; i < rands.Length; i++)
             total += rands[i].probabilityWeight;
@@ -47,37 +47,41 @@ public class HazardSpawner: MonoBehaviour {
     float nextChangeTime;
     bool triggerChecked = true;
     
-    public float[] currentProbabilities;
+    float[] currentProbabilities = null;
+    int currentModeIdx = -1;
     
 	// Use this for initialization
 	void Start () {
 	    nextSpawnTime = Time.time + spawnIntervalMin;
 	    nextChangeTime = Time.time + changeModeIntervalMin;
-	    currentProbabilities = spawnModes[NamedRandomizable.GetRandom(spawnModes)].probabilities;        
+	    this.changeHazardProbabilities();
+
+	}  
+	
+	void changeHazardProbabilities(){
+	    int newModeIdx = NamedRandomizable.GetRandomIdx(spawnModes);
+	    if(newModeIdx == currentModeIdx)
+	        newModeIdx = (newModeIdx+1) % spawnModes.Length;
+	    currentModeIdx = newModeIdx;
+	    currentProbabilities = spawnModes[newModeIdx].probabilities;        
         for(int i = 0; i < hazardFamilies.Length; i++){
             if(i < currentProbabilities.Length)
                 hazardFamilies[i].probabilityWeight = currentProbabilities[i];
             else
                 hazardFamilies[i].probabilityWeight = 0F;
         }
-	}  
+	}
     	
 	// Update is called once per frame
 	void Update () {
 	
 	    if(Time.time >= nextChangeTime){
-	        currentProbabilities = spawnModes[NamedRandomizable.GetRandom(spawnModes)].probabilities;        
-	        for(int i = 0; i < hazardFamilies.Length; i++){
-	            if(i < currentProbabilities.Length)
-	                hazardFamilies[i].probabilityWeight = currentProbabilities[i];
-	            else
-	                hazardFamilies[i].probabilityWeight = 0F;
-	        }
+	        this.changeHazardProbabilities();
 	        nextChangeTime = Time.time + Random.Range(changeModeIntervalMin, changeModeIntervalMax);
 	    }
 	    
 		if(Time.time >= nextSpawnTime && triggerChecked){
-		    GameObject[] hazardPrefabs = hazardFamilies[NamedRandomizable.GetRandom(hazardFamilies)].prefabs;
+		    GameObject[] hazardPrefabs = hazardFamilies[NamedRandomizable.GetRandomIdx(hazardFamilies)].prefabs;
 		    
 		    int r = Random.Range(0, hazardPrefabs.Length);
 

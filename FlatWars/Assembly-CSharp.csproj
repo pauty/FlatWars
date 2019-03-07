@@ -78,7 +78,6 @@
      <Compile Include="Assets\Scripts\PrismaBuilder.cs" />
      <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\QuadEnemyController.cs" />
-     <Compile Include="Assets\Scripts\ReCalcCubeTexture.cs" />
      <Compile Include="Assets\Scripts\Rotation.cs" />
      <Compile Include="Assets\Scripts\SphereExplosionController.cs" />
      <Compile Include="Assets\Scripts\TimeDestroyer.cs" />

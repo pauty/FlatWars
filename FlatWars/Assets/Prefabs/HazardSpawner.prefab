@@ -77,7 +77,7 @@ MonoBehaviour:
     - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
   spawnModes:
   - name: Mixed
-    probabilityWeight: 30
+    probabilityWeight: 0
     probabilities:
     - 30
     - 40
@@ -100,11 +100,12 @@ MonoBehaviour:
     - 0
     - 0
     - 100
-  changeModeIntervalMin: 30
-  changeModeIntervalMax: 30
-  spawnIntervalMin: 1
+  changeModeIntervalMin: 10
+  changeModeIntervalMax: 15
+  spawnIntervalMin: 0.5
   spawnIntervalMax: 1
   currentProbabilities: []
+  currentModeIdx: -1
 --- !u!65 &4749227633763872768
 BoxCollider:
   m_ObjectHideFlags: 0
