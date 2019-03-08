@@ -11,6 +11,9 @@ public class UIController : MonoBehaviour
      public GameObject gameoverFirstSelection;
      GameObject selectedObj;
      public Image playerHealthImage = null; 
+     public Color highHealthColor;
+     public Color lowHealthColor;
+     public Color criticalHealthColor;
      public GameObject pauseMenuPanel = null;
      public GameObject gameOverPanel = null;
      public TextMeshProUGUI inGameScoreText = null;
@@ -31,9 +34,20 @@ public class UIController : MonoBehaviour
              EventSystem.current.SetSelectedGameObject(selectedObj);
      
          selectedObj = EventSystem.current.currentSelectedGameObject;
-         
-         if(playerHealthImage != null)
-            playerHealthImage.fillAmount = player.healthPoints/player.maxHealthPoints;
+
+         if(playerHealthImage != null){
+            float healthPercent = player.healthPoints/player.maxHealthPoints;
+            playerHealthImage.fillAmount = healthPercent;
+            if(healthPercent > 0.30F){
+                playerHealthImage.color = highHealthColor;
+            }
+            else if(healthPercent > 0.15F){
+                playerHealthImage.color = lowHealthColor;
+            }
+            else{
+                playerHealthImage.color = criticalHealthColor;
+            }
+         }
          
          if(inGameScoreText !=  null)
             inGameScoreText.text = ((int)player.totalDistance).ToString() + " m";

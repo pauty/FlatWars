@@ -26,7 +26,7 @@ public class QuadEnemyController : MonoBehaviour {
 	        Destroy(this.gameObject);
 	        if(destroy){
 	            if(gameController.SpawnFuel()){
-	                for(int i = 0; i < 3; i++)
+	                for(int i = 0; i < baseBehaviour.fuelSpawnedOnDeath; i++)
 	                    Instantiate(baseBehaviour.fuelObject, transform.position + Random.onUnitSphere*2F, Random.rotation);
 	            }
 	        }

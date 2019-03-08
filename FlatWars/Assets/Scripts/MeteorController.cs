@@ -8,6 +8,8 @@ public class MeteorController : MonoBehaviour
     public GameObject finalExplosion = null;
     public float minScale = 2F;
     public float maxScale = 6F;
+    public float minScaleReductionOnSplit = 1.5F;
+    public float maxScaleReductionOnSplit = 2F;
     public int minChildren = 2;
     public int  maxChildren = 4;
     bool dead = false;
@@ -37,11 +39,12 @@ public class MeteorController : MonoBehaviour
         MeteorController childMeteor;
         if(this.maxScale > this.minScale){
             int r = Random.Range(minChildren, maxChildren+1);
-            //int idx;
+            int idx;
             for(int i = 0; i < r; i++){
-        	    childObject = Instantiate(meteorPrefabs[0], transform.position + Random.onUnitSphere*2.5F, Random.rotation);
+                idx = Random.Range(0, meteorPrefabs.Length);
+        	    childObject = Instantiate(meteorPrefabs[idx], transform.position + Random.onUnitSphere*(minScale+0.5F), Random.rotation);
         	    childMeteor = childObject.GetComponent<MeteorController>();
-        	    childMeteor.maxScale = Mathf.Max(childMeteor.minScale, this.scale - 1.5F);           	    
+        	    childMeteor.maxScale = Mathf.Max(childMeteor.minScale, this.scale - Random.Range(minScaleReductionOnSplit, maxScaleReductionOnSplit));
             }
             AudioSource audiosource = gameObject.GetComponent<AudioSource>();
             //gameObject.GetComponent<SphereCollider>().enabled = false;
@@ -55,7 +58,7 @@ public class MeteorController : MonoBehaviour
             Destroy(this.gameObject);
         }
         if(gameController.SpawnFuel()){
-	        for(int i = 0; i < 3; i++)
+	        for(int i = 0; i < baseBehaviour.fuelSpawnedOnDeath; i++)
 	            Instantiate(baseBehaviour.fuelObject, transform.position + Random.onUnitSphere*2F, Random.rotation);
 	    }  
    

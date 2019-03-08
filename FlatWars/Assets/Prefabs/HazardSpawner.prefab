@@ -75,9 +75,12 @@ MonoBehaviour:
     - {fileID: 7581524037091289389, guid: cee6a1bf45682827f904ae3854154721, type: 3}
     - {fileID: 7581524037091289389, guid: 8da220466af3e42339c92fd468735957, type: 3}
     - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
+    - {fileID: 7581524037091289389, guid: 29d77d2857d13cde3bc4cd4ee2fa5807, type: 3}
+    - {fileID: 7581524037091289389, guid: 8da220466af3e42339c92fd468735957, type: 3}
+    - {fileID: 7581524037091289389, guid: c736b8dd29c26c245aa00abbed3ee4df, type: 3}
   spawnModes:
   - name: Mixed
-    probabilityWeight: 0
+    probabilityWeight: 30
     probabilities:
     - 30
     - 40
@@ -102,10 +105,8 @@ MonoBehaviour:
     - 100
   changeModeIntervalMin: 10
   changeModeIntervalMax: 15
-  spawnIntervalMin: 0.5
+  spawnIntervalMin: 0.6
   spawnIntervalMax: 1
-  currentProbabilities: []
-  currentModeIdx: -1
 --- !u!65 &4749227633763872768
 BoxCollider:
   m_ObjectHideFlags: 0

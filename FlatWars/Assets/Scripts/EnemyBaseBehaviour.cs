@@ -22,6 +22,7 @@ public class EnemyBaseBehaviour : MonoBehaviour
     public bool delegateDestroy = false;
     public GameObject deathExplosion = null;
     public GameObject fuelObject = null;
+    public int fuelSpawnedOnDeath = 3;
     
     [Header("Player Damage Settings")]
     public float damage = 5F;
@@ -86,7 +87,7 @@ public class EnemyBaseBehaviour : MonoBehaviour
             //destroy gameobject
             Destroy(this.gameObject);
             if(gameController.SpawnFuel()){
-	            for(int i = 0; i < 3; i++)
+	            for(int i = 0; i < fuelSpawnedOnDeath; i++)
 	                Instantiate(fuelObject, transform.position + Random.onUnitSphere*2F, Random.rotation);
             }
         }
