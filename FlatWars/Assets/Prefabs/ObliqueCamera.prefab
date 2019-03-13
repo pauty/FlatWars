@@ -48,6 +48,10 @@ MonoBehaviour:
   tunnel: {fileID: 0}
   maxW: 18
   maxH: 10
+  mousePositionsWeights:
+  - 1000
+  - 900
+  - 800
 --- !u!20 &20081651661581620
 Camera:
   m_ObjectHideFlags: 0

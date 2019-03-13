@@ -5160,6 +5160,10 @@ MonoBehaviour:
   tunnel: {fileID: 0}
   maxW: 1
   maxH: 1
+  mousePositionsWeights:
+  - 1000
+  - 900
+  - 800
 --- !u!1 &849217887
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,7 +5543,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.027801514, w: 0}
+  m_margin: {x: 0, y: 0, z: 2.7681732, w: 0}
   m_textInfo:
     textComponent: {fileID: 1230765568}
     characterCount: 4
@@ -6307,7 +6311,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.027801514, w: 0}
+  m_margin: {x: 0, y: 0, z: 2.6671333, w: 0}
   m_textInfo:
     textComponent: {fileID: 2134418796}
     characterCount: 5

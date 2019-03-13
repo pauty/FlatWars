@@ -9,20 +9,44 @@ public class ObliqueProjection: MonoBehaviour {
     public PrismaBuilder tunnel = null;
     public float maxW = 1F;
     public float maxH = 1F;
+ 
+    public float[] mousePositionsWeights = new float[3];
+    float[] normalizedMousePositionsWeights;
+    int newMousePositionIndex;
+    
     Vector3 origin;
-    Camera cam;
-    Vector3 prevMousePosition;
+    Camera cam;  
+    Vector3[] mousePositions;
+
+    
     GameObject player = null;
     bool followingPlayer = false;
     
     void Start(){
+    
         origin = transform.localPosition;
         cam = gameObject.GetComponent<Camera>();
+        
         if(tunnel != null){
             maxW = (tunnel.widthSteps*tunnel.sectorWidth)/2;
             maxH = (tunnel.heightSteps*tunnel.sectorHeight)/2;
         }
+        
         player = GameObject.FindWithTag("Player");
+        
+        newMousePositionIndex = 0;
+        mousePositions = new Vector3[mousePositionsWeights.Length];
+        normalizedMousePositionsWeights = new float[mousePositionsWeights.Length];
+        //compute weight total sum
+        float weightSum = 0;
+        for(int i = 0; i < mousePositionsWeights.Length; i++)  
+            weightSum += mousePositionsWeights[i];
+        //normalize weights
+        for(int i = 0; i < normalizedMousePositionsWeights.Length; i++)  
+            normalizedMousePositionsWeights[i] = mousePositionsWeights[i]/weightSum;
+        //initialize mouse positions (all equal)
+        for(int i = 0; i < mousePositions.Length; i++)  
+            mousePositions[i] = Input.mousePosition;
     }
     
     void Update(){
@@ -30,9 +54,15 @@ public class ObliqueProjection: MonoBehaviour {
             followingPlayer = !followingPlayer;
         }
         
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = (mousePosition + prevMousePosition)/2;
-        prevMousePosition = mousePosition;
+        mousePositions[newMousePositionIndex] = Input.mousePosition;
+
+        Vector3 averageMousePosition = normalizedMousePositionsWeights[0]*mousePositions[newMousePositionIndex];
+        int idx;
+        for(int i = 1; i < normalizedMousePositionsWeights.Length; i++){
+            idx = (newMousePositionIndex+i) % mousePositions.Length;
+            averageMousePosition += normalizedMousePositionsWeights[i]*mousePositions[idx];
+        }
+        newMousePositionIndex = (newMousePositionIndex+1) % mousePositions.Length;
         
         float xc, yc;
         if(player != null && followingPlayer){
@@ -40,8 +70,8 @@ public class ObliqueProjection: MonoBehaviour {
             yc = player.transform.localPosition.y/maxH;
         }
         else{
-            xc = (2*mousePosition.x-Screen.width)/(Screen.width);
-            yc = (2*mousePosition.y-Screen.height)/(Screen.height);    
+            xc = (2*averageMousePosition.x-Screen.width)/(Screen.width);
+            yc = (2*averageMousePosition.y-Screen.height)/(Screen.height);    
             xc = Mathf.Min(1F, Mathf.Max(-1F, xc));
             yc = Mathf.Min(1F, Mathf.Max(-1F, yc));
         }
