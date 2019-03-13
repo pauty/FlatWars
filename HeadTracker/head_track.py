@@ -18,6 +18,9 @@ class HeadTracker:
     GOTURN_TRACKER_ID = 5
     MOSSE_TRACKER_ID = 6
     CSRT_TRACKER_ID = 7
+    
+    DEFAULT_DETECTOR_SCALE_FACTOR = 1.3
+    DEFAULT_DETECTOR_MIN_NEIGHBORS = 4
 
     #webcam thread class
     class WebcamReadThread(threading.Thread):
@@ -64,6 +67,8 @@ class HeadTracker:
         self.keyboard_listener.start() 
         #Init face detector
         self.face_cascade_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
+        self.detector_scale_factor = HeadTracker.DEFAULT_DETECTOR_SCALE_FACTOR
+        self.detector_min_neighbors = HeadTracker.DEFAULT_DETECTOR_MIN_NEIGHBORS
         #Choose tracker
         self.tracker_id = trackerid
         
@@ -88,7 +93,17 @@ class HeadTracker:
             #Define rectangle colors
             self.track_rect_color = (255, 0, 0)
             self.detect_rect_color = (0, 165, 255)
-   
+            
+    def set_detector_parameters(self, scalefactor, minneighbours):
+        #How much the image get resized for face detection 
+        #good values are in the range [1.05, 1.4]
+        #low value = more accurate face detection, slower
+        self.detector_scale_factor = scalefactor
+        #How many face rectangles must be near the current one to declare a 'hit'
+        #good values are in the range [3,6]
+        #too low = risk of false positives; too high = risk of false negatives
+        self.detector_min_neighbors = minneighbours
+        
     def get_new_tracker(self):            
         if self.tracker_id == HeadTracker.BOOSTING_TRACKER_ID:
             tracker = cv2.TrackerBoosting_create()
@@ -155,7 +170,7 @@ class HeadTracker:
                     #image so we will convert the baseImage to a gray-based image
                     gray = cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY)
                     #Now use the haar cascade detector to find all faces in the image
-                    faces = self.face_cascade_detector.detectMultiScale(gray, 1.3, 5)
+                    faces = self.face_cascade_detector.detectMultiScale(gray, scaleFactor=self.detector_scale_factor, minNeighbors=self.detector_min_neighbors)
 
 
                     #For now, we are only interested in the 'largest' face, and we
@@ -194,22 +209,21 @@ class HeadTracker:
                     #IMPORTANT: waitKey is necessary to display the image after calling imshow!!!!!
                     pressed_key = cv2.waitKey(1)
                     if(pressed_key == ord('q')):
-                        self.keyboard_listener.stop()
-                        self.webcam_thread.stop()
-                        self.webcam_thread.join()
-                        cv2.destroyAllWindows()
+                        self.__stop_head_track_loop()
                         return 
 
         #To ensure we can also deal with the user pressing Ctrl-C in the console
         #we have to check for the KeyboardInterrupt exception and destroy
         #all opencv windows (if any) and exit the tracking loop
         except KeyboardInterrupt as e:
-            self.keyboard_listener.stop()
-            self.webcam_thread.stop()
-            self.webcam_thread.join()
-            if(self.show_video):
-                cv2.destroyAllWindows()
+            self.__stop_head_track_loop()
             return 
+    
+    def __stop_head_track_loop(self):
+        self.keyboard_listener.stop()
+        self.webcam_thread.stop()
+        self.webcam_thread.join()
+        cv2.destroyAllWindows()
     
 if __name__ == '__main__':
     show_gui = "-gui" in sys.argv
