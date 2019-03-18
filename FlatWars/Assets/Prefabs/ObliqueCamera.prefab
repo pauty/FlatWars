@@ -48,6 +48,7 @@ MonoBehaviour:
   tunnel: {fileID: 0}
   maxW: 18
   maxH: 10
+  manualCameraSpeed: 1.5
   mousePositionsWeights:
   - 1000
   - 900

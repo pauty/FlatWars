@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
     
     
     public UIController UI;
+    public AudioController audioController;
     public float spawnFuelProbabilityIncrement = 0.1F;
     public float spawnFuelProbabilityDecrementRate = 2F;
     public float spawnFuelProbability = 0.5F;
@@ -60,8 +61,10 @@ public class GameController : MonoBehaviour {
 	    UI.ShowPauseMenu(false);
 	}
 	
-	public void GameOver(){
+	public void GameOver(){    
 	    gameOver = true;
+	    if(audioController != null)
+	        audioController.PlayGameOverMusic();
 	    Time.timeScale = 0F;
 	    player.enabled = false;
 	    UI.ShowGameOver(true);

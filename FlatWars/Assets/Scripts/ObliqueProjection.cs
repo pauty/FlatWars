@@ -9,6 +9,8 @@ public class ObliqueProjection: MonoBehaviour {
     public PrismaBuilder tunnel = null;
     public float maxW = 1F;
     public float maxH = 1F;
+    
+    public float manualCameraSpeed = 1F;
  
     public float[] mousePositionsWeights = new float[3];
     float[] normalizedMousePositionsWeights;
@@ -18,9 +20,10 @@ public class ObliqueProjection: MonoBehaviour {
     Camera cam;  
     Vector3[] mousePositions;
 
+    bool manualCamera = false;
     
-    GameObject player = null;
-    bool followingPlayer = false;
+    float xc = 0F;
+    float yc = 0F;
     
     void Start(){
     
@@ -31,8 +34,6 @@ public class ObliqueProjection: MonoBehaviour {
             maxW = (tunnel.widthSteps*tunnel.sectorWidth)/2;
             maxH = (tunnel.heightSteps*tunnel.sectorHeight)/2;
         }
-        
-        player = GameObject.FindWithTag("Player");
         
         newMousePositionIndex = 0;
         mousePositions = new Vector3[mousePositionsWeights.Length];
@@ -51,7 +52,7 @@ public class ObliqueProjection: MonoBehaviour {
     
     void Update(){
         if(Input.GetKeyDown("f")){
-            followingPlayer = !followingPlayer;
+            manualCamera = !manualCamera;
         }
         
         mousePositions[newMousePositionIndex] = Input.mousePosition;
@@ -64,17 +65,17 @@ public class ObliqueProjection: MonoBehaviour {
         }
         newMousePositionIndex = (newMousePositionIndex+1) % mousePositions.Length;
         
-        float xc, yc;
-        if(player != null && followingPlayer){
-            xc = -player.transform.localPosition.x/maxW;
-            yc = player.transform.localPosition.y/maxH;
+        if(manualCamera){
+            xc += (Input.GetAxis("JoyRX")*manualCameraSpeed*Time.deltaTime);
+            yc += (Input.GetAxis("JoyRY")*manualCameraSpeed*Time.deltaTime);
         }
         else{
             xc = (2*averageMousePosition.x-Screen.width)/(Screen.width);
             yc = (2*averageMousePosition.y-Screen.height)/(Screen.height);    
-            xc = Mathf.Min(1F, Mathf.Max(-1F, xc));
-            yc = Mathf.Min(1F, Mathf.Max(-1F, yc));
         }
+              
+        xc = Mathf.Min(1F, Mathf.Max(-1F, xc));
+        yc = Mathf.Min(1F, Mathf.Max(-1F, yc));
         
         Vector3 cameraLocalPosition = cam.transform.localPosition;
         cameraLocalPosition.x = origin.x - xc*maxW;
