@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     public float minSpeed = 40F;
     public float baseSpeed = 70F;
     public float maxSpeed = 140F;
+    public float acceleration = 50F;
     public Vector3 speed = new Vector3(0F, 0F, 70F);
     public float rotationSpeed = 500F;
     public float movementSpeed = 16F;
@@ -81,7 +82,6 @@ public class PlayerController : MonoBehaviour {
                 //FIRE	        
                 Instantiate(projectile, gun1.position, gun1.rotation);	          
                 Instantiate(projectile, gun2.position, gun2.rotation);	        
-                Debug.Log(0);
                 fireTime = Time.time;	
                 audiosource.clip = shootSound;
                 audiosource.volume = shootVolume;
@@ -91,14 +91,14 @@ public class PlayerController : MonoBehaviour {
              
              //velocity
              if((Input.GetButton("SpeedUp") && speed.z < maxSpeed))
-                updateSpeed.z += 1;
+                updateSpeed.z += acceleration*Time.deltaTime;
              else if((Input.GetButton("SpeedDown") && speed.z > minSpeed))
-                updateSpeed.z -= 1;
+                updateSpeed.z -= acceleration*Time.deltaTime;
              else{
                 if(speed.z < baseSpeed)
-                    updateSpeed.z += 1;
+                    updateSpeed.z += acceleration*Time.deltaTime;
                 else if(speed.z > baseSpeed)
-                    updateSpeed.z -= 1;
+                    updateSpeed.z -= acceleration*Time.deltaTime;
              }
              
              //rotation
@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void LateUpdate(){
+	    //update player speed AFTER every object/enemy has updated its position using player speed
 	    speed = updateSpeed;
 	    totalDistance = totalDistance + updateSpeed.z*Time.deltaTime;
 	}

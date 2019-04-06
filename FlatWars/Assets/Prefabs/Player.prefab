@@ -216,6 +216,7 @@ MonoBehaviour:
   minSpeed: 40
   baseSpeed: 75
   maxSpeed: 110
+  acceleration: 100
   speed: {x: 0, y: 0, z: 50}
   rotationSpeed: 1000
   movementSpeed: 16
